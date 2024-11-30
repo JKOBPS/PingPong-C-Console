@@ -59,7 +59,6 @@ namespace PinPongC_
                 jugador[yPlayer, 1] = '|';
                 jugando = true;
             }
-            Console.Clear();
             return jugador; //Jugador2(jugador, yPlayer, y, pelotaX,  jugando);
         }
 

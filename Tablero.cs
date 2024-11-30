@@ -16,11 +16,10 @@ namespace PinPongC_
             velocidad = 150;
             tablero = new char[y, x];
         }
-        public Tablero(int y, int x, int velocidad)//Constructor que permite parámetros.
+        public Tablero(int y, int x)//Constructor que permite parámetros.
         {
             this.x = x;
             this.y = y;
-            this.velocidad = velocidad;
             tablero = new char[y, x];
         }
         public char[,] getTablero() => tablero;//Geter, obtiene la matriz desde el objeto que se ha incovado, objeto de clase Tablero.
@@ -34,8 +33,8 @@ namespace PinPongC_
             //Introduce paredes
             for (int i = 0; i < tablero.GetLength(0); i++)
             {
-                tablero[i, 0] = '|';
-                tablero[i, tablero.GetLength(1) - 1] = '|';
+                tablero[i, 0] = ']';
+                tablero[i, tablero.GetLength(1) - 1] = '[';
             }
             //Introduce techo y suelo
             for (int i = 0; i < tablero.GetLength(1); i++)
@@ -49,6 +48,7 @@ namespace PinPongC_
         //IMPRIME EN PANTALLA LA MATRIZ
         public static void Imprime(char[,] array)
         {
+            Console.Clear();
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
