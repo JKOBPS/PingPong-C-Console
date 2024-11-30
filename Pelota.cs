@@ -19,7 +19,7 @@ namespace PinPongC_
             y = 5;
             direccionX = 1;
             direccionY = 1;
-            xAnterior = 15;
+            xAnterior = 5;
             yAnterior = 5;
         }
         public Pelota(int y, int x)
@@ -28,8 +28,8 @@ namespace PinPongC_
             this.y = y / 2;
             direccionX = 1;
             direccionY = 1;
-            xAnterior = x / 2;
-            yAnterior = y / 2;
+            xAnterior = 5;
+            yAnterior = 5;
         }
 
         //SETTERS
@@ -49,13 +49,13 @@ namespace PinPongC_
         {
             this.direccionY = direccionY;
         }
-        public void setAnteriorX(int xAnterior)
+        public void setAnteriorX(int x)
         {
-            this.xAnterior = xAnterior;
+            this.xAnterior = x;
         }
-        public void setAnteriorY(int yAnterior)
+        public void setAnteriorY(int y)
         {
-            this.yAnterior = yAnterior;
+            this.yAnterior = y;
         }
         //GETTERS
         public int getDireccionX() => direccionX;
@@ -66,15 +66,16 @@ namespace PinPongC_
         public int getAnteriorY() => yAnterior;
 
         //MÉTODO PARA MOVER LA PELOTA
-        //TODO, PINTAR LA PELOTA Y GENERAR MOVIMIENTO DE LA PELOTA
+        //TODO
+        //CUANDO TOQUE AL JUGADOR METER UNA POSIBILIDAD DE QUE LA Y CAMBIE DE DIRECCIÓN
         public char[,] PosicionaPelota(char[,] matriz)
         {
-            //Setea pelota.anteriorY/X como la actual pelota.Y/X
-            this.setAnteriorY(this.getPelotaX());
-            this.setAnteriorX(this.getPelotaY());
             //Pone asterisco en la nueva posición, y pone espacio en la anterior posición
-            matriz[this.getPelotaY(), this.getPelotaX()] = '*';
+            matriz[this.getPelotaY(), this.getPelotaX()] = 'o';
             matriz[this.getAnteriorY(), this.getAnteriorX()] = ' ';
+            //Setea pelota.anteriorY/X como la actual pelota.Y/X
+            this.setAnteriorY(this.getPelotaY());
+            this.setAnteriorX(this.getPelotaX());
             return matriz;
         }
         public void CambiaX()

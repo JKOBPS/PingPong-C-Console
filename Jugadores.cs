@@ -63,40 +63,40 @@ namespace PinPongC_
         }
 
         //MÉTODO PARA JUGADOR 2, MODIFICA POSICIÓN DE ESTE
-        public static char[,] Jugador2(char[,] jugador, ref int yPlayer, int y, int x, int pelotaX, int pelotaY)
-        {
-            Random random = new Random();
-            int aleatorio = random.Next(1, 4);
+        //public static char[,] Jugador2(char[,] jugador, ref int yPlayer, int y, int x, int pelotaX, int pelotaY)
+        //{
+        //    Random random = new Random();
+        //    int aleatorio = random.Next(1, 4);
 
-            switch(aleatorio)
-            {
-                case 1:
-                    if (yPlayer == 1) jugador[yPlayer, x - 1] = '|'; //Se quedará en fila 1 para no llegar al borde del mapa (fila 0)
-                    else
-                    {
-                        jugador[yPlayer-2, x - 1] = ' ';
-                        jugador[pelotaY-1, x - 1] = '|';
-                    }
-                    break;
-                case 2:
-                    if (yPlayer == 1) jugador[yPlayer, x - 1] = '|'; //Se quedará en fila 1 para no llegar al borde del mapa (fila 0)
-                    else
-                    {
-                        jugador[yPlayer--, x - 1] = ' ';
-                        jugador[pelotaY, x - 1] = '|';
-                        jugador[yPlayer++, x - 1] = ' ';
-                    }
-                    break;
-                case 3:
-                    if (yPlayer == 1) jugador[yPlayer, x - 1] = '|'; //Se quedará en fila 1 para no llegar al borde del mapa (fila 0)
-                    else
-                    {
-                        jugador[yPlayer + 2, x - 1] = ' ';
-                        jugador[pelotaY + 1, x - 1] = '|';
-                    }
-                    break;
-            }
-            return jugador;
-        }
+        //    switch(aleatorio)
+        //    {
+        //        case 1:
+        //            if (yPlayer == 1) jugador[yPlayer, x - 1] = '|'; //Se quedará en fila 1 para no llegar al borde del mapa (fila 0)
+        //            else
+        //            {
+        //                jugador[yPlayer-2, x - 1] = ' ';
+        //                jugador[pelotaY-1, x - 1] = '|';
+        //            }
+        //            break;
+        //        case 2:
+        //            if (yPlayer == 1) jugador[yPlayer, x - 1] = '|'; //Se quedará en fila 1 para no llegar al borde del mapa (fila 0)
+        //            else
+        //            {
+        //                jugador[yPlayer--, x - 1] = ' ';
+        //                jugador[pelotaY, x - 1] = '|';
+        //                jugador[yPlayer++, x - 1] = ' ';
+        //            }
+        //            break;
+        //        case 3:
+        //            if (yPlayer == 1) jugador[yPlayer, x - 1] = '|'; //Se quedará en fila 1 para no llegar al borde del mapa (fila 0)
+        //            else
+        //            {
+        //                jugador[yPlayer + 2, x - 1] = ' ';
+        //                jugador[pelotaY + 1, x - 1] = '|';
+        //            }
+        //            break;
+        //    }
+        //    return jugador;
+        //}
     }
 }

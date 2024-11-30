@@ -15,7 +15,7 @@ namespace PinPongC_
         {
             //Objetos y variables
             Console.CursorVisible = false;
-            Tablero tablero = new Tablero(15, 50);
+            Tablero tablero = new Tablero();
             Pelota pelota = new Pelota(tablero.getY(), tablero.getX());
             Jugadores p1 = new Jugadores();
             Jugadores p2 = new Jugadores();
@@ -57,8 +57,9 @@ namespace PinPongC_
         }
 
         //TODO
-        //1- Crear pelota
+        //1- Arreglar bug, moverte a la vez que la pelota rompe todo.
         //2- Crear enemigo
         //3- Configurar velocidades y tamaño jugador
+        
     }
 }

@@ -3,20 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\jacob\\source\\repos\\PinPongC#\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|C:\\Users\\jacob\\source\\repos\\PinPongC#\\pelota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|c:\\users\\jacob\\source\\repos\\pinpongc#\\pelota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|solutionrelative:pelota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|C:\\Users\\jacob\\source\\repos\\PinPongC#\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|C:\\Users\\jacob\\source\\repos\\PinPongC#\\tablero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|solutionrelative:tablero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|c:\\users\\jacob\\source\\repos\\pinpongc#\\jugadores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|C:\\Users\\jacob\\source\\repos\\PinPongC#\\jugadores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|solutionrelative:jugadores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|C:\\Users\\jacob\\source\\repos\\PinPongC#\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,39 +30,39 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\jacob\\source\\repos\\PinPongC#\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\jacob\\source\\repos\\PinPongC#\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwCMAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAACUAAAAAAAAAAAAgwD0AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-22T16:55:59.57Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Jugadores.cs",
               "DocumentMoniker": "C:\\Users\\jacob\\source\\repos\\PinPongC#\\Jugadores.cs",
               "RelativeDocumentMoniker": "Jugadores.cs",
               "ToolTip": "C:\\Users\\jacob\\source\\repos\\PinPongC#\\Jugadores.cs",
               "RelativeToolTip": "Jugadores.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAwwDwAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAwwGMAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-29T18:05:34.103Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Tablero.cs",
               "DocumentMoniker": "C:\\Users\\jacob\\source\\repos\\PinPongC#\\Tablero.cs",
               "RelativeDocumentMoniker": "Tablero.cs",
               "ToolTip": "C:\\Users\\jacob\\source\\repos\\PinPongC#\\Tablero.cs",
               "RelativeToolTip": "Tablero.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAIwCYAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowCYAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-29T18:04:31.93Z",
               "EditorCaption": ""
@@ -75,7 +75,7 @@
               "RelativeDocumentMoniker": "Pelota.cs",
               "ToolTip": "C:\\Users\\jacob\\source\\repos\\PinPongC#\\Pelota.cs",
               "RelativeToolTip": "Pelota.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAYwE0AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-29T19:35:43.23Z",
               "EditorCaption": ""
