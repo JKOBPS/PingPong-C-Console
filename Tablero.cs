@@ -45,6 +45,12 @@ namespace PinPongC_
             return tablero;
         }
         
+        //RESETEA EL TABLERO
+        public static void Reset()
+        {
+            //TODO
+        }
+
         //IMPRIME EN PANTALLA LA MATRIZ
         public static void Imprime(char[,] array)
         {
@@ -58,6 +64,7 @@ namespace PinPongC_
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine("Pulsa flecha arriba para subir o flecha abajo para bajar\n\nCreado por Jacob Parra Silva");
         }
     }
 }

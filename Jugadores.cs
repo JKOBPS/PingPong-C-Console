@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,18 +9,28 @@ namespace PinPongC_
 {
     internal class Jugadores
     {
-        int sizeP1, velocidad;
+        int sizeP1, y, yAnterior, velocidad;
         
         public Jugadores ()
         {
             sizeP1 = 1;
-            velocidad = 150;
+            velocidad = 500;
         }
-        public Jugadores(int sizeP1, int velocidad)
+        public Jugadores(int sizeP1, int y)
         {
             this.sizeP1 = sizeP1;
-            this.velocidad = velocidad;
+            this.y = y;
+            yAnterior = 1;
         }
+        //SETTER
+        public void setNpcY(int y) => this.y = y;
+        public void setAnteriorY(int y) => yAnterior = y;
+
+        //GETTERS
+        public int getNpcY() => y;
+        public int getAnteriorY() => yAnterior;
+
+
         //MÉTODO JUGADOR 1, MODIFICA LA POSICIÓN DE ESTE.
         public static char[,] Jugador1(char[,] jugador, ref int yPlayer, int y, ref bool jugando)
         {
@@ -63,40 +74,39 @@ namespace PinPongC_
         }
 
         //MÉTODO PARA JUGADOR 2, MODIFICA POSICIÓN DE ESTE
-        //public static char[,] Jugador2(char[,] jugador, ref int yPlayer, int y, int x, int pelotaX, int pelotaY)
-        //{
-        //    Random random = new Random();
-        //    int aleatorio = random.Next(1, 4);
+        public char[,] Jugador2(char[,] jugador, int pelotaY, int tableroX, int direccionPelota)
+        {
+            Random random = new Random();
+            int aleatorio = random.Next(1, 8);
+            tableroX = tableroX - 2;
 
-        //    switch(aleatorio)
-        //    {
-        //        case 1:
-        //            if (yPlayer == 1) jugador[yPlayer, x - 1] = '|'; //Se quedará en fila 1 para no llegar al borde del mapa (fila 0)
-        //            else
-        //            {
-        //                jugador[yPlayer-2, x - 1] = ' ';
-        //                jugador[pelotaY-1, x - 1] = '|';
-        //            }
-        //            break;
-        //        case 2:
-        //            if (yPlayer == 1) jugador[yPlayer, x - 1] = '|'; //Se quedará en fila 1 para no llegar al borde del mapa (fila 0)
-        //            else
-        //            {
-        //                jugador[yPlayer--, x - 1] = ' ';
-        //                jugador[pelotaY, x - 1] = '|';
-        //                jugador[yPlayer++, x - 1] = ' ';
-        //            }
-        //            break;
-        //        case 3:
-        //            if (yPlayer == 1) jugador[yPlayer, x - 1] = '|'; //Se quedará en fila 1 para no llegar al borde del mapa (fila 0)
-        //            else
-        //            {
-        //                jugador[yPlayer + 2, x - 1] = ' ';
-        //                jugador[pelotaY + 1, x - 1] = '|';
-        //            }
-        //            break;
-        //    }
-        //    return jugador;
-        //}
+            switch (aleatorio)
+            {
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                    jugador[this.getAnteriorY(), tableroX] = ' ';
+                    jugador[pelotaY, tableroX] = '|';
+                    this.setAnteriorY(pelotaY);
+                    break;
+                case 6:
+                case 7:
+                    if (direccionPelota == 1 && jugador[pelotaY -1, tableroX] != '_')
+                    {
+                        jugador[this.getAnteriorY(), tableroX] = ' ';
+                        jugador[pelotaY - 1, tableroX] = '|';
+                        this.setAnteriorY(pelotaY - 1);
+                    } else if (direccionPelota == 2 && jugador[pelotaY + 1, tableroX] != '^')
+    {
+                        jugador[this.getAnteriorY(), tableroX] = ' ';
+                        jugador[pelotaY + 1, tableroX] = '|';
+                        this.setAnteriorY(pelotaY + 1);
+                    }
+                    break;
+            }
+            return jugador;
+        }
     }
 }
