@@ -77,7 +77,7 @@ namespace PinPongC_
         public char[,] Jugador2(char[,] jugador, int pelotaY, int tableroX, int direccionPelota)
         {
             Random random = new Random();
-            int aleatorio = random.Next(1, 6);
+            int aleatorio = random.Next(1, 7);
             tableroX = tableroX - 2;
 
             switch (aleatorio)
@@ -91,6 +91,7 @@ namespace PinPongC_
                     break;
                 case 4:
                 case 5:
+                case 6:
                     if (direccionPelota == 1 && jugador[pelotaY -1, tableroX] != '_')
                     {
                         jugador[this.getAnteriorY(), tableroX] = ' ';

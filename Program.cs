@@ -18,7 +18,7 @@ namespace PinPongC_
         {
             //Objetos y variables
             Console.CursorVisible = false;
-            Tablero tablero = new Tablero(10, 20);
+            Tablero tablero = new Tablero();
             Pelota pelota = new Pelota(tablero.getY(), tablero.getX());
             Jugadores p1 = new Jugadores();
             Jugadores p2 = new Jugadores(1, pelota.getDireccionY());
@@ -33,19 +33,19 @@ namespace PinPongC_
             int marcadorP1 = 0, marcadorNpc = 0, ganador = 0, goal = 0;
 
             //Ajustes Temporizadores
-            reloj = new Timer(Temporizador, null, 0, 500);
+            reloj = new Timer(Temporizador, null, 0, 300);
 
             //MÉTODO MUEVE LA PELOTA Y AL ENEMIGO EN TORNO A ESTA
             void Temporizador(object sender)
             {
                 marcadorP1 = puntos.getJugadorPts();
                 marcadorNpc = puntos.getNpcPts();
-                if (marcadorP1 >= 1)
+                if (marcadorP1 >= 3)
                 {
                     Win();
                     ganador = 1;
                 }
-                else if (marcadorNpc >= 1)
+                else if (marcadorNpc >= 3)
                 {
                     Win();
                     ganador = 2;
@@ -118,7 +118,7 @@ namespace PinPongC_
                 {
                     case 1:
                         
-                        Console.WriteLine($"Enhorabuena has ganado!\nRESULTADO: Jugador({marcadorP1}) - {marcadorNpc}Npc");
+                        Console.WriteLine($"Enhorabuena has ganado!\nRESULTADO: Jugador({marcadorP1}) - ({marcadorNpc})Npc");
                         gameOver();
                         break;
                     case 2:
@@ -184,7 +184,7 @@ namespace PinPongC_
                 pelota.setPelotaX(tablero.getX() / 2);
                 pelota.setPelotaY(tablero.getY() / 2);
                 reseteaMarcador = false;
-                reloj.Change(0, 500);
+                reloj.Change(0, 300);
             }
         }
 

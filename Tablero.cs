@@ -11,8 +11,8 @@ namespace PinPongC_
         //CONSTRUCTORES DE LA CLASE TABLERO
         public Tablero()//constructor predeterminado.
         {
-            x = 20;
-            y = 7;
+            x = 25;
+            y = 9;
             velocidad = 150;
             tablero = new char[y, x];
         }
