@@ -11,8 +11,8 @@ namespace PinPongC_
         //CONSTRUCTORES DE LA CLASE TABLERO
         public Tablero()//constructor predeterminado.
         {
-            x = 30;
-            y = 11;
+            x = 20;
+            y = 7;
             velocidad = 150;
             tablero = new char[y, x];
         }
@@ -44,15 +44,9 @@ namespace PinPongC_
             }
             return tablero;
         }
-        
-        //RESETEA EL TABLERO
-        public static void Reset()
-        {
-            //TODO
-        }
 
         //IMPRIME EN PANTALLA LA MATRIZ
-        public static void Imprime(char[,] array)
+        public static void Imprime(char[,] array, int p1Pts, int npcPts)
         {
             Console.Clear();
             for (int i = 0; i < array.GetLength(0); i++)
@@ -65,6 +59,7 @@ namespace PinPongC_
                 Console.WriteLine();
             }
             Console.WriteLine("Pulsa flecha arriba para subir o flecha abajo para bajar\n\nCreado por Jacob Parra Silva");
+            Console.WriteLine($"MARCADOR\nJugador({p1Pts}) - ({npcPts})Maquina");
         }
     }
 }
