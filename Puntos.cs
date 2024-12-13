@@ -23,6 +23,13 @@ namespace PinPongC_
         {
             jugadorPuntos++;
         }
+
+        public void resetPts()
+        {
+            npcPuntos = 0;
+            jugadorPuntos = 0;
+        }
+
         //GETTERS
         public int getNpcPts() => npcPuntos;
         public int getJugadorPts () => jugadorPuntos;

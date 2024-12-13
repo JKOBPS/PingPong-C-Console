@@ -35,7 +35,6 @@ namespace PinPongC_
         public static char[,] Jugador1(char[,] jugador, ref int yPlayer, int y, ref bool jugando)
         {
             ConsoleKeyInfo tecla1;
-
             if (jugando == true)
             {
                 //Recogerá la tecla si no tiene otra tecla en cola
@@ -70,10 +69,11 @@ namespace PinPongC_
                 jugador[yPlayer, 1] = '|';
                 jugando = true;
             }
-            return jugador; //Jugador2(jugador, yPlayer, y, pelotaX,  jugando);
+            return jugador;
         }
 
         //MÉTODO PARA JUGADOR 2, MODIFICA POSICIÓN DE ESTE
+        //Tiene 50% posibilidades de acertar la posición de la pelota.
         public char[,] Jugador2(char[,] jugador, int pelotaY, int tableroX, int direccionPelota)
         {
             Random random = new Random();
@@ -81,7 +81,7 @@ namespace PinPongC_
             tableroX = tableroX - 2;
 
             switch (aleatorio)
-            {
+            { //primeros case el jugador se mueve preciso entorno a pelota
                 case 1:
                 case 2:
                 case 3:
@@ -91,7 +91,7 @@ namespace PinPongC_
                     break;
                 case 4:
                 case 5:
-                case 6:
+                case 6: //Estos cases se mueve el jugador una posición más que la pelota, haciendo que esté desalineado con ella y pueda fallar.
                     if (direccionPelota == 1 && jugador[pelotaY -1, tableroX] != '_')
                     {
                         jugador[this.getAnteriorY(), tableroX] = ' ';

@@ -66,8 +66,6 @@ namespace PinPongC_
         public int getAnteriorY() => yAnterior;
 
         //MÉTODO PARA MOVER LA PELOTA
-        //TODO
-        //CUANDO TOQUE AL JUGADOR METER UNA POSIBILIDAD DE QUE LA Y CAMBIE DE DIRECCIÓN
         public char[,] PosicionaPelota(char[,] matriz)
         {
             //Pone asterisco en la nueva posición, y pone espacio en la anterior posición
