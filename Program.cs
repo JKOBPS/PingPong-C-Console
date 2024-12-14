@@ -47,11 +47,13 @@ namespace PinPongC_
                     {
                         ganador = 1;
                         Win();
+                        return;
                     }
                     else if (marcadorNpc >= 1)
                     {
                         ganador = 2;
                         Win();
+                        return;
                     }
 
                     if (matriz[pelota.getPelotaY(), pelota.getPelotaX() + 1] == '[')
@@ -158,6 +160,7 @@ namespace PinPongC_
                 //MÉTODO GAME OVER, EL USUARIO ELIGE QUÉ HACER.
                 void gameOver()
                 {
+                    Console.Clear();
                     Console.CursorVisible = true;
                     char tryAgain;
                     bool succes = false;
@@ -177,7 +180,7 @@ namespace PinPongC_
                         case 'N':
                             Console.WriteLine("Cerrando juego");
                             final = true;
-                            Thread.Sleep(100);
+                            Thread.Sleep(1000);
                             break;
                     }
                 }
@@ -188,6 +191,7 @@ namespace PinPongC_
                     //TODO hay fallos a la hora de resetear cuando acaba el partido, se buguea todo
                     if (reseteaMarcador == true)
                     {
+                        Console.Clear();
                         Console.WriteLine("Ambos Marcadores a 0");
                         Thread.Sleep(2000);
                         puntos.resetPts();
@@ -197,7 +201,7 @@ namespace PinPongC_
                         goal = 0;
                         reseteaMarcador = false;
                         pausarJugador = false;
-                        
+                        reloj.Change(0, 300);
                     }
                     else
                     {
