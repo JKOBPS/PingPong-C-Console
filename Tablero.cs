@@ -11,16 +11,15 @@ namespace PinPongC_
         //CONSTRUCTORES DE LA CLASE TABLERO
         public Tablero()//constructor predeterminado.
         {
-            x = 30;
-            y = 11;
+            x = 25;
+            y = 9;
             velocidad = 150;
             tablero = new char[y, x];
         }
-        public Tablero(int y, int x, int velocidad)//Constructor que permite parámetros.
+        public Tablero(int y, int x)//Constructor que permite parámetros.
         {
             this.x = x;
             this.y = y;
-            this.velocidad = velocidad;
             tablero = new char[y, x];
         }
         public char[,] getTablero() => tablero;//Geter, obtiene la matriz desde el objeto que se ha incovado, objeto de clase Tablero.
@@ -34,8 +33,8 @@ namespace PinPongC_
             //Introduce paredes
             for (int i = 0; i < tablero.GetLength(0); i++)
             {
-                tablero[i, 0] = '|';
-                tablero[i, tablero.GetLength(1) - 1] = '|';
+                tablero[i, 0] = ']';
+                tablero[i, tablero.GetLength(1) - 1] = '[';
             }
             //Introduce techo y suelo
             for (int i = 0; i < tablero.GetLength(1); i++)
@@ -45,10 +44,11 @@ namespace PinPongC_
             }
             return tablero;
         }
-        
+
         //IMPRIME EN PANTALLA LA MATRIZ
-        public static void Imprime(char[,] array)
+        public static void Imprime(char[,] array, int p1Pts, int npcPts)
         {
+            Console.Clear();
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
@@ -58,6 +58,8 @@ namespace PinPongC_
                 }
                 Console.WriteLine();
             }
+            Console.WriteLine("Pulsa flecha arriba para subir o flecha abajo para bajar\n\nCreado por Jacob Parra Silva");
+            Console.WriteLine($"MARCADOR\nJugador({p1Pts}) - ({npcPts})Maquina");
         }
     }
 }
