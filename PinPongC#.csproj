@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Jugadores.cs" />
+    <Compile Include="Menu.cs" />
     <Compile Include="Pelota.cs" />
     <Compile Include="Puntos.cs" />
     <Compile Include="Tablero.cs" />

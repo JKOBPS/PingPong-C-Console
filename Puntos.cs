@@ -8,7 +8,7 @@ namespace PinPongC_
 {
     internal class Puntos
     {
-        int npcPuntos, jugadorPuntos;
+        int npcPuntos, jugadorPuntos, puntosParaGanar;
         public Puntos()
         {
             npcPuntos = 0;

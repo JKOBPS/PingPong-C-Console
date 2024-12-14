@@ -14,10 +14,12 @@ namespace PinPongC_
     {
         static Timer reloj;
         static readonly object lockObject = new object();//Lock para evitar que el temporizador y el jugador varien la matriz a la vez
+
         static void Main(string[] args)
         {
             //Objetos y variables
             Console.CursorVisible = false;
+            Menu menuObj = new Menu();
             Tablero tablero = new Tablero();
             Pelota pelota = new Pelota(tablero.getY(), tablero.getX());
             Jugadores p1 = new Jugadores();
@@ -27,11 +29,12 @@ namespace PinPongC_
 
             char[,] matriz = Tablero.DibujaTablero(tablero.getTablero());
             int yPlayer = tablero.getY() / 2;
-            bool menu = false;
+            bool menu = menuObj.getMenuProgram();
             bool jugando = false;
             bool reseteaMarcador = false;
-            int marcadorP1 = 0, marcadorNpc = 0, ganador = 0, goal = 0;
+            int marcadorP1 = 0, marcadorNpc = 0, ganador = 0, goal = 0, puntosParaGanar = 3;
 
+            menuObj.PrincipalMenu(); //Abre el menú principal
             do
             {
                 //Ajustes Temporizadores
@@ -42,6 +45,7 @@ namespace PinPongC_
                 {
                     marcadorP1 = puntos.getJugadorPts();
                     marcadorNpc = puntos.getNpcPts();
+                    puntosParaGanar = menuObj.getLimGol();
 
                     //IF E ELSE IF, DETECTA SI SE HA MARCADO GOL EN UNA U OTRA PORTERÍA Y LE DA EL GOL AL QUE LO HA METIDO,
                     //ADEMÁS COMPRUEBA SI HA LLEGADO AL LÍMITE DE PUNTUACIÓN, PARA ACABAR O RESETEAR PARTIDO
@@ -53,7 +57,7 @@ namespace PinPongC_
                         menu = true;
 
                         Goal();
-                        if (marcadorP1 >= 3) //Si marcador es igual a número se llamará a Win()
+                        if (marcadorP1 >= puntosParaGanar) //Si marcador es igual a puntos para ganar se llamará a Win()
                         {
                             ganador = 1;
                             Win();
@@ -67,7 +71,7 @@ namespace PinPongC_
                         menu = true;
 
                         Goal();
-                        if (marcadorNpc >= 3) //Si marcador es igual a número se llamará a Win()
+                        if (marcadorNpc >= puntosParaGanar) //Si marcador es igual a puntos para ganar se llamará a Win()
                         {
                             ganador = 2;
                             Win();
@@ -101,7 +105,7 @@ namespace PinPongC_
 
                     lock (lockObject) //Bloquea Imprime si ya lo está usando el do while de abajo
                     {
-                        Tablero.Imprime(matriz, marcadorP1, marcadorNpc);
+                        Tablero.Imprime(matriz, marcadorP1, marcadorNpc, puntosParaGanar);
                     }
                 }
 
@@ -115,7 +119,7 @@ namespace PinPongC_
 
                         lock (lockObject) //Bloquea Imprime si ya lo está usando el temporizador
                         {
-                            if (!menu) Tablero.Imprime(matriz, marcadorP1, marcadorNpc);
+                            if (!menu) Tablero.Imprime(matriz, marcadorP1, marcadorNpc, puntosParaGanar);
                         }
                     }
                 };
@@ -198,6 +202,13 @@ namespace PinPongC_
 
                     Console.CursorVisible = false;
                 }
+                //MÉDOTO DE PROGRAM, PARA PODER CAMBIAR LA VARIABLE menu
+                void ChangeMenuVar(bool x)
+                {
+                    if(x) menu = true;
+                    else menu = false;
+                }
+
 
                 //RESETEA A VALORES INICIALES 
                 void Reset()
@@ -205,13 +216,14 @@ namespace PinPongC_
                     if (reseteaMarcador == true)
                     {
                         reseteaMarcador = false;
-                        menu = false;
                         puntos.resetPts();
                         pelota.setPelotaX(tablero.getX() / 2);
                         pelota.setPelotaY(tablero.getY() / 2);
                         ganador = 0;
                         goal = 0;
-                        
+                        menuObj.PrincipalMenu();
+                        menu = false;
+
                         reloj.Change(0, 300);
 
                     }
@@ -226,10 +238,12 @@ namespace PinPongC_
             } while (true);
 
             //TODO
-            //Situación actual, todo funciona como esperado.
+            //Situación actual, seguir construyendo los menús para ajustar el juego.
 
             //1- Configurar velocidades, tamaño jugador y el límite de goles.
             //2- El rebote de la pelota que no siempre sea igual*******
+            //3- El jugador no aparece hasta que no pulsas una tecla
+            
         }
     }
 }

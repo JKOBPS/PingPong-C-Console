@@ -46,7 +46,7 @@ namespace PinPongC_
         }
 
         //IMPRIME EN PANTALLA LA MATRIZ
-        public static void Imprime(char[,] array, int p1Pts, int npcPts)
+        public static void Imprime(char[,] array, int p1Pts, int npcPts, int puntosParaGanar)
         {
             Console.Clear();
             for (int i = 0; i < array.GetLength(0); i++)
@@ -58,7 +58,7 @@ namespace PinPongC_
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine($"MARCADOR\nJugador({p1Pts}) - ({npcPts})Maquina");
+            Console.WriteLine($"MARCADOR - BEST OF {puntosParaGanar}\nJugador({p1Pts}) - ({npcPts})");
             Console.WriteLine("Pulsa flecha arriba para subir o flecha abajo para bajar\n\nCreado por Jacob Parra Silva");
         }
     }
