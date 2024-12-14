@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PinPongC_
@@ -29,7 +30,6 @@ namespace PinPongC_
         //GETTERS
         public int getNpcY() => y;
         public int getAnteriorY() => yAnterior;
-
 
         //MÉTODO JUGADOR 1, MODIFICA LA POSICIÓN DE ESTE.
         public static char[,] Jugador1(char[,] jugador, ref int yPlayer, int y, ref bool jugando)

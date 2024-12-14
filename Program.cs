@@ -29,10 +29,7 @@ namespace PinPongC_
             int yPlayer = tablero.getY() / 2;
             bool menu = false;
             bool jugando = false;
-            bool pausarJugador = false;
             bool reseteaMarcador = false;
-            bool final = false;
-            bool cerrar = false;
             int marcadorP1 = 0, marcadorNpc = 0, ganador = 0, goal = 0;
 
             do
@@ -56,7 +53,7 @@ namespace PinPongC_
                         menu = true;
 
                         Goal();
-                        if (marcadorP1 >= 1) //Si marcador es igual a número se llamará a Win()
+                        if (marcadorP1 >= 3) //Si marcador es igual a número se llamará a Win()
                         {
                             ganador = 1;
                             Win();
@@ -70,7 +67,7 @@ namespace PinPongC_
                         menu = true;
 
                         Goal();
-                        if (marcadorNpc >= 1) //Si marcador es igual a número se llamará a Win()
+                        if (marcadorNpc >= 3) //Si marcador es igual a número se llamará a Win()
                         {
                             ganador = 2;
                             Win();
@@ -109,16 +106,16 @@ namespace PinPongC_
                 }
 
                 //BLOQUE MOVER JUGADOR CON TECLAS
-                while (pausarJugador != true)
+                while (true)
                 {
-                    if (!menu) //Evita que el jugador se mueva e imprima si hay algún menú activo
+                    if (!menu) //primer !menu evita que el jugador haga un readkey dentro de un menú, el segundo !menu hace que si hay un readkey activo y estamos en el menú, no lo imprima.
                     {
                         Thread.Sleep(100);//Velocidad mover jugador
                         matriz = Jugadores.Jugador1(matriz, ref yPlayer, tablero.getY(), ref jugando);
 
                         lock (lockObject) //Bloquea Imprime si ya lo está usando el temporizador
                         {
-                            Tablero.Imprime(matriz, marcadorP1, marcadorNpc);
+                            if (!menu) Tablero.Imprime(matriz, marcadorP1, marcadorNpc);
                         }
                     }
                 };
@@ -127,17 +124,17 @@ namespace PinPongC_
                 void Win()
                 {
                     reloj.Change(Timeout.Infinite, Timeout.Infinite);
-                    Thread.Sleep(1000);
                     Console.Clear();
-
                     switch (ganador)
                     {
                         case 1:
                             Console.WriteLine($"Enhorabuena has ganado!\nRESULTADO: Jugador({marcadorP1}) - ({marcadorNpc})Npc");
+                            Thread.Sleep(5000);
                             gameOver();
                             break;
                         case 2:
                             Console.WriteLine($"Lo sentimos, has perdido, la próxima vez será!\nRESULTADO: Jugador({marcadorP1}) - ({marcadorNpc})Npc");
+                            Thread.Sleep(5000);
                             gameOver();
                             break;
                     }
@@ -168,6 +165,7 @@ namespace PinPongC_
                 //MÉTODO GAME OVER, EL USUARIO ELIGE QUÉ HACER.
                 void gameOver()
                 {
+                    Console.Clear();
                     Console.CursorVisible = true;
                     char tryAgain;
                     bool succes = false;
@@ -193,16 +191,15 @@ namespace PinPongC_
 
                             Console.Clear();
                             Console.WriteLine("Cerrando juego");
-                            cerrar = true;
                             Thread.Sleep(1000);
-
+                            Environment.Exit(0);
                             break;
                     }
 
                     Console.CursorVisible = false;
                 }
 
-                //RESETEA EL TABLERO 
+                //RESETEA A VALORES INICIALES 
                 void Reset()
                 {
                     if (reseteaMarcador == true)
@@ -216,6 +213,7 @@ namespace PinPongC_
                         goal = 0;
                         
                         reloj.Change(0, 300);
+
                     }
                     else
                     {
@@ -225,12 +223,13 @@ namespace PinPongC_
                         reloj.Change(0, 300);
                     }
                 }
-            } while (cerrar != true);
+            } while (true);
 
             //TODO
-            //Situación actual, todo funciona como esperado, excepto al celebrar gol, si pulsas una tecla el jugador imprime su matriz. También pasa en la segunda vez que abres el menú de volver a jugar.
-            //1- Configurar velocidades y tamaño jugador
-            //2- El rebote de la pelota que no siempre sea igual
+            //Situación actual, todo funciona como esperado.
+
+            //1- Configurar velocidades, tamaño jugador y el límite de goles.
+            //2- El rebote de la pelota que no siempre sea igual*******
         }
     }
 }
