@@ -58,8 +58,8 @@ namespace PinPongC_
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("Pulsa flecha arriba para subir o flecha abajo para bajar\n\nCreado por Jacob Parra Silva");
             Console.WriteLine($"MARCADOR\nJugador({p1Pts}) - ({npcPts})Maquina");
+            Console.WriteLine("Pulsa flecha arriba para subir o flecha abajo para bajar\n\nCreado por Jacob Parra Silva");
         }
     }
 }

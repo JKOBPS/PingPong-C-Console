@@ -107,7 +107,6 @@ namespace PinPongC_
                 {
                     Thread.Sleep(100);//Velocidad mover jugador
                     matriz = Jugadores.Jugador1(matriz, ref yPlayer, tablero.getY(), ref jugando);
-                    Console.WriteLine();
 
                     lock (lockObject) //Bloquea Imprime si ya lo está usando el temporizador
                     {
@@ -117,11 +116,13 @@ namespace PinPongC_
                 };
 
                 //MÉTODO WIN
-                //TODO resolver bug de escritura cuando se pierde
                 void Win()
                 {
                     reloj.Change(Timeout.Infinite, Timeout.Infinite);
+                    jugando = false;
+                    Thread.Sleep(1000);
                     Console.Clear();
+
                     switch (ganador)
                     {
                         case 1:
@@ -132,8 +133,6 @@ namespace PinPongC_
                             Console.WriteLine($"Lo sentimos, has perdido, la próxima vez será!\nRESULTADO: Jugador({marcadorP1}) - ({marcadorNpc})Npc");
                             gameOver();
                             break;
-                        default:
-                            return;
                     }
                 }
 
@@ -142,16 +141,21 @@ namespace PinPongC_
                 {
                     marcadorP1 = puntos.getJugadorPts();
                     marcadorNpc = puntos.getNpcPts();
+
                     reloj.Change(Timeout.Infinite, Timeout.Infinite);
-                    Console.Clear();
+                    
 
                     switch (goal)
                     {
                         case 1:
+                            Console.Clear();
                             Console.WriteLine($"GOOOOOOL del Jugador\nEl marcador se posiciona {marcadorP1} a {marcadorNpc}");
+                            Thread.Sleep(1500);
                             break;
                         case 2:
+                            Console.Clear();
                             Console.WriteLine($"GOOOOOOL del Npc\nEl marcador se posiciona {marcadorP1} a {marcadorNpc}");
+                            Thread.Sleep(1500);
                             break;
                     }
                     Reset();
@@ -160,47 +164,57 @@ namespace PinPongC_
                 //MÉTODO GAME OVER, EL USUARIO ELIGE QUÉ HACER.
                 void gameOver()
                 {
-                    Console.Clear();
+
                     Console.CursorVisible = true;
                     char tryAgain;
                     bool succes = false;
-                    pausarJugador = true;
+
                     do
                     {
                         Console.WriteLine("El partido ha acabado, ¿quieres volver a jugar? (Y/N)");
                         succes = char.TryParse(Console.ReadLine().ToUpper(), out tryAgain);
                     } while (succes == false && (tryAgain != 'Y' || tryAgain != 'N'));
-                    Console.CursorVisible = false;
+
                     switch (tryAgain)
                     {
                         case 'Y':
+                            
                             reseteaMarcador = true;
+                            
+                            Console.Clear();
+                            Console.WriteLine("NUEVO PARTIDO\n(Ambos Marcadores a 0)");
+                            Thread.Sleep(1000);
+
                             Reset();
+
                             break;
                         case 'N':
+
+                            Console.Clear();
                             Console.WriteLine("Cerrando juego");
+
                             final = true;
                             Thread.Sleep(1000);
+
                             break;
                     }
+
+                    Console.CursorVisible = false;
                 }
 
                 //RESETEA EL TABLERO 
                 void Reset()
                 {
-                    //TODO hay fallos a la hora de resetear cuando acaba el partido, se buguea todo
                     if (reseteaMarcador == true)
                     {
-                        Console.Clear();
-                        Console.WriteLine("Ambos Marcadores a 0");
-                        Thread.Sleep(2000);
+                        reseteaMarcador = false;
+
                         puntos.resetPts();
                         pelota.setPelotaX(tablero.getX() / 2);
                         pelota.setPelotaY(tablero.getY() / 2);
                         ganador = 0;
                         goal = 0;
-                        reseteaMarcador = false;
-                        pausarJugador = false;
+                        
                         reloj.Change(0, 300);
                     }
                     else
@@ -214,7 +228,7 @@ namespace PinPongC_
             } while (final != true);
 
             //TODO
-            //Situación actual, Se resetea el juego, marcadores a 0 e inicia la partida, pero al querer mover el jugador, estoy dentro de un readline, que me bloquea poder usar arrowkey
+            //Situación actual, el juego funciona, pero al limpiar la consola y mostrar mensajes o menú, se cuela la impresión del juego
 
             //Resolver bug cuando acaba la partida, también configurar el poder jugar de nuevo
             //1- Configurar el perder o ganar puntos
