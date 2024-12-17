@@ -82,6 +82,7 @@ namespace PinPongC_
                         Console.WriteLine("Opción no válida, vuelve a intentarlo");
                         break;
                 }
+                Console.Clear();
             } while (!succesMenu);
             
         }
@@ -139,7 +140,6 @@ namespace PinPongC_
                     difPorcentaje = 90;
                     break;
             }
-            
             Thread.Sleep(1500);
         }
 

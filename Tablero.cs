@@ -76,7 +76,7 @@ namespace PinPongC_
         //IMPRIME EN PANTALLA LA MATRIZ
         public static void Imprime(char[,] array, int p1Pts, int npcPts, int puntosParaGanar, int dificultad)
         {
-            Console.Clear();
+            Console.SetCursorPosition(0, 0);
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)

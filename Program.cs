@@ -172,11 +172,13 @@ namespace PinPongC_
                             Console.Clear();
                             Console.WriteLine($"GOOOOOOL del Jugador\nEl marcador se posiciona {marcadorP1} a {marcadorNpc}");
                             Thread.Sleep(1500);
+                            Console.Clear();
                             break;
                         case 2:
                             Console.Clear();
                             Console.WriteLine($"GOOOOOOL del Npc\nEl marcador se posiciona {marcadorP1} a {marcadorNpc}");
                             Thread.Sleep(1500);
+                            Console.Clear();
                             break;
                     }
                 }
@@ -253,7 +255,6 @@ namespace PinPongC_
             //2- Configurar velocidades, tamaño jugador y el límite de goles.
 
             //3- El jugador no aparece hasta que no pulsas una tecla
-
         }
     }
 }
