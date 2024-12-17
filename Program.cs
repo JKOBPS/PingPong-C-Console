@@ -40,6 +40,7 @@ namespace PinPongC_
                 menuObj.PrincipalMenu();
                 tablero.setXY(menuObj.getSizeCampo());
                 pelota.setPelotaY(tablero.getY() / 2);
+                pelota.setPelotaX(tablero.getX() / 2);
                 yPlayer = tablero.getY() / 2;
                 matriz = Tablero.DibujaTablero(tablero.getTablero());
             }

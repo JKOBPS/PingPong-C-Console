@@ -151,11 +151,11 @@ namespace PinPongC_
                 Console.Clear();
                 Console.WriteLine("AJUSTAR TAMAÑO DEL CAMPO");
                 Console.WriteLine("Elige tamaño del campo:\n1. MUY PEQUEÑO\n2. PEQUEÑO\n3. NORMAL\n4. GRANDE\n5. MUY GRANDE");
-                succes = int.TryParse(Console.ReadLine(), out dificultad);
+                succes = int.TryParse(Console.ReadLine(), out tamañoCampo);
 
-            } while (!succes || !(dificultad >= 1) || !(dificultad <= 5));
+            } while (!succes || !(tamañoCampo >= 1) || !(tamañoCampo <= 5));
 
-            switch (dificultad)
+            switch (tamañoCampo)
             {
                 case 1:
                     this.SetSizeCampo(1);

@@ -78,7 +78,7 @@ namespace PinPongC_
         {
             Random random = new Random();
             int aleatorio = random.Next(1, dificultad);
-            tableroX = tableroX - 2;
+            tableroX = tableroX - 2; //posiciónX jugador2
 
             switch (aleatorio)
             { //primeros case el jugador se mueve preciso entorno a pelota
