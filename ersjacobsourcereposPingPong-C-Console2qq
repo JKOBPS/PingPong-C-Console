@@ -1,0 +1,123 @@
+[33mcommit e711fc05ff353cc1c0b31369e6c15063e7de5271[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Merge: 99b36b2 8e88a23
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Tue Dec 17 14:25:42 2024 +0100
+
+    Merge branch 'testBranch'
+
+[33mcommit 8e88a23711d57ef47b7c2ad93b8e42390796dd3b[m[33m ([m[1;31morigin/testBranch[m[33m, [m[1;32mtestBranch[m[33m)[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Tue Dec 17 14:22:26 2024 +0100
+
+    1.1.0 Ajustar tamaño de campo añadido
+
+[33mcommit 99b36b2744c283113de678156750570387b79c34[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Sat Dec 14 23:40:09 2024 +0100
+
+    1.1.0 Menú Principal añadido. (Sólo activado cambiar límite de goles)
+
+[33mcommit 2aa08df3920bbf9e4340947fa56172a4e5dd4143[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Sat Dec 14 23:37:09 2024 +0100
+
+    1.1.0 Menú Principal añadido. (Sólo activado cambiar límite de goles)
+
+[33mcommit 086b1740b579fa898e72610d057315c342802690[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Sat Dec 14 23:34:47 2024 +0100
+
+    1.1.0 Menú Principal añadido. (Sólo activado cambiar límite de goles)
+
+[33mcommit 0ce7314837d56d83f374a8cccc42e08f1a061284[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Sat Dec 14 21:47:14 2024 +0100
+
+    PING-PONG CSHARP 1.0.0
+
+[33mcommit ff7194e226e94479276544902899cb3f8752b01f[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Sat Dec 14 20:01:34 2024 +0100
+
+    Mejoras menús 0.0.1
+
+[33mcommit c90590e1353aae25b6f16f60459926349251d0e6[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Sat Dec 14 19:00:59 2024 +0100
+
+    Subiendo actualización anterior
+
+[33mcommit 2b61a08875d46862f66d1a0f91ac768acd8c60c8[m
+Merge: 7eca40d 2a62deb
+Author: Jacob Parra Silva <89087960+JKOBPS@users.noreply.github.com>
+Date:   Sat Dec 14 18:02:36 2024 +0100
+
+    Merge pull request #1 from JKOBPS/testBranch
+    
+    Test branch and Master merge
+
+[33mcommit 2a62debc58306fdf9fff7e5ef8ebb697681ee516[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Sat Dec 14 17:58:54 2024 +0100
+
+    Actualizar main branch con situación actual
+
+[33mcommit 9bee8f7c55b8d86a6ed5ed574813b9d2d7cecf12[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Fri Dec 13 18:09:36 2024 +0100
+
+    Resolviendo reiniciar partida/cerrar juego
+
+[33mcommit 9c727995bf4bb835cb3bae96d0f8886e36ddf255[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Mon Dec 2 17:52:51 2024 +0100
+
+    Marcador funcional, Jugar de nuevo WorkInProgress 1.0
+
+[33mcommit cdc9bb904303f97361082cf56081e90d5c7d938e[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Mon Dec 2 17:34:45 2024 +0100
+
+    Marcador funcional, Jugar de nuevo WorkInProgress
+
+[33mcommit 1344199b052c0c7f865d984bad8b7f62355c46ed[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Sun Dec 1 15:32:59 2024 +0100
+
+    Avances enemigo y rebote pelota. Marcador Working progess
+
+[33mcommit e77e9e1d5e7239efd0be36f284925463868aea30[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Sun Dec 1 00:49:39 2024 +0100
+
+    Actualización
+
+[33mcommit 76cc17e449600063d4cfd0e9c692f1c0aab26564[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Sun Dec 1 00:35:10 2024 +0100
+
+    Mejorando el movimiento de la pelota
+
+[33mcommit 6e236c9fb40ae7d5e12be1606b7231089c604f23[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Sat Nov 30 21:22:09 2024 +0100
+
+    Creación del tester branch
+
+[33mcommit 7eca40d41c905beefc4df53322c61d48fdbff137[m
+Author: Jacob Parra Silva <89087960+JKOBPS@users.noreply.github.com>
+Date:   Sat Nov 30 21:05:16 2024 +0100
+
+    Update README.md
+
+[33mcommit 5756c9475460532a1e1bbb1a2b3bdb34d7d045ac[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Sat Nov 30 20:56:55 2024 +0100
+
+    FirstProjectCommit
+
+[33mcommit a94a9236f0790c164a648222378aa82415a6f8e7[m
+Author: Jacob Parra <jacobparrasilva@gmail.com>
+Date:   Sat Nov 30 20:43:52 2024 +0100
+
+    first commit
