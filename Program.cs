@@ -51,6 +51,7 @@ namespace PinPongC_
                 reloj = new Timer(Temporizador, null, 0, 300);
 
                 //MÉTODO MUEVE LA PELOTA Y AL ENEMIGO EN TORNO A ESTA AUTOMÁTICAMENTE CADA X MILISEGUNDOS
+                //EN ESTE MÉTODO SEGÚN LA POSICIÓN DE LA PELOTA, SE DETECTAN, JUGADORES, PORTERÍA, TECHOS Y SUELOS.
                 void Temporizador(object sender)
                 {
                     marcadorP1 = puntos.getJugadorPts();
@@ -88,23 +89,27 @@ namespace PinPongC_
                         } else Reset();
                     }
 
-                    //Cambian la dirección de Y al tocar techo o suelo
-                    if (matriz[pelota.getPelotaY() - 1, pelota.getPelotaX()] == '_') pelota.setDireccionY(2);
-                    else if (matriz[pelota.getPelotaY() + 1, pelota.getPelotaX()] == '^') pelota.setDireccionY(1);
-
                     //Cambia la dirección de X e Y al tocar jugador
                     if (matriz[pelota.getPelotaY(), pelota.getPelotaX() + 1] == '|')
                     {
                         pelota.setDireccionX(1);
                         if (matriz[pelota.getPelotaY() - 1, pelota.getPelotaX()] != '_')//No cambia dirección si está cerca del techo o suelo
-                            pelota.setDireccionY(random.Next(1, 3));//Toca jugador y dirección cambia a 1 o 2 aleatoriamente
+                        {
+                            pelota.setDireccionY(random.Next(1, 3)); //dirección cambia a 1 o 2 aleatoriamente
+                        }
                     }
                     else if (matriz[pelota.getPelotaY(), pelota.getPelotaX() - 1] == '|')
                     {
                         pelota.setDireccionX(2);
                         if (matriz[pelota.getPelotaY() + 1, pelota.getPelotaX()] != '^')//No cambia dirección si está cerca del techo o suelo
-                            pelota.setDireccionY(random.Next(1, 3));//Toca jugador y dirección cambia a 1 o 2 aleatoriamente
+                        {
+                            pelota.setDireccionY(random.Next(1, 3)); //dirección cambia a 1 o 2 aleatoriamente
+                        } 
                     }
+
+                    //Cambian la dirección de Y al tocar techo o suelo
+                    if (matriz[pelota.getPelotaY() - 1, pelota.getPelotaX()] == '_') pelota.setDireccionY(2);
+                    else if (matriz[pelota.getPelotaY() + 1, pelota.getPelotaX()] == '^') pelota.setDireccionY(1);
 
                     //Posición pelota se actualiza en base a los parámetros anteriores
                     pelota.CambiaY();
@@ -143,12 +148,12 @@ namespace PinPongC_
                     {
                         case 1:
                             Console.WriteLine($"Enhorabuena has ganado!\nRESULTADO: Jugador({marcadorP1}) - ({marcadorNpc})Npc");
-                            Thread.Sleep(5000);
+                            Thread.Sleep(3000);
                             gameOver();
                             break;
                         case 2:
                             Console.WriteLine($"Lo sentimos, has perdido, la próxima vez será!\nRESULTADO: Jugador({marcadorP1}) - ({marcadorNpc})Npc");
-                            Thread.Sleep(5000);
+                            Thread.Sleep(3000);
                             gameOver();
                             break;
                     }
@@ -186,7 +191,7 @@ namespace PinPongC_
 
                     do
                     {
-                        Console.WriteLine("El partido ha acabado, ¿quieres volver a jugar? (Y/N)");
+                        Console.WriteLine("El partido ha acabado, ¿Quieres volver al menu principal? (Y/N)");
                         succes = char.TryParse(Console.ReadLine().ToUpper(), out tryAgain);
                     } while (succes == false && (tryAgain != 'Y' || tryAgain != 'N'));
 
@@ -196,7 +201,7 @@ namespace PinPongC_
 
                             reseteaMarcador = true;
                             Console.Clear();
-                            Console.WriteLine("NUEVO PARTIDO\n(Ambos Marcadores a 0)");
+                            Console.WriteLine("Volviendo al menú principal");
                             Thread.Sleep(1000);
                             Reset();
 
@@ -242,11 +247,13 @@ namespace PinPongC_
 
             //TODO
             //Situación actual, seguir construyendo los menús para ajustar el juego.
-            
-            //1- Configurar velocidades, tamaño jugador y el límite de goles.
-            //2- El rebote de la pelota que no siempre sea igual*******
+
+            //1- El rebote de la pelota que no siempre sea igual*******
+
+            //2- Configurar velocidades, tamaño jugador y el límite de goles.
+
             //3- El jugador no aparece hasta que no pulsas una tecla
-            
+
         }
     }
 }

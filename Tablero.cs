@@ -25,31 +25,30 @@ namespace PinPongC_
         //SETTER
         public void setXY(int tamaño)
         {
-            //TODO
             switch (tamaño)
             {
                 case 1:
-                    this.x = 21;
+                    this.x = 17;
                     this.y = 7; 
                     this.tablero = new char[y, x];
                     break;
                 case 2:
-                    this.x = 23;
-                    this.y = 8;
+                    this.x = 19;
+                    this.y = 7;
                     this.tablero = new char[y, x];
                     break;
                 case 3:
-                    this.x = 25;
+                    this.x = 21;
                     this.y = 9;
                     this.tablero = new char[y, x];
                     break;
                 case 4:
-                    this.x = 27;
-                    this.y = 10;
+                    this.x = 23;
+                    this.y = 11;
                     this.tablero = new char[y, x];
                     break;
                 case 5:
-                    this.x = 29;
+                    this.x = 25;
                     this.y = 11;
                     this.tablero = new char[y, x];
                     break;
@@ -87,8 +86,8 @@ namespace PinPongC_
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine($"MARCADOR - BEST OF {puntosParaGanar}\nDIFICULTAD ({dificultad}%)\nJugador({p1Pts}) - ({npcPts})");
-            Console.WriteLine("Pulsa flecha arriba para subir o flecha abajo para bajar\n\nCreado por Jacob Parra Silva");
+            Console.WriteLine($"MARCADOR\nJugador({p1Pts}) - ({npcPts})\nPRIMERO EN MARCAR {puntosParaGanar} GOL/ES\nDIFICULTAD ({dificultad}%)");
+            Console.WriteLine("\nPulsa flecha arriba para subir o flecha abajo para bajar\n\nCreado por Jacob Parra Silva");
         }
     }
 }

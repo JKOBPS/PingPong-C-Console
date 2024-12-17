@@ -13,7 +13,7 @@ namespace PinPongC_
     {
         bool succes, succesMenu, menuProgram;
         int limiteGoles, dificultad, difPorcentaje, tamañoCampo, tamañoJugadores, velocidadJugador, velocidadPelota;
-        string menu;
+        string menu, textoTamCampo;
 
         public Menu()
         {
@@ -22,6 +22,7 @@ namespace PinPongC_
             dificultad = 9;
             difPorcentaje = 70;
             tamañoCampo = 3;
+            textoTamCampo = "NORMAL";
             tamañoJugadores = 1;
             velocidadJugador = 1;
             velocidadPelota = 1;
@@ -36,7 +37,7 @@ namespace PinPongC_
                 Console.WriteLine("ESCRIBE START PARA JUGAR\n\nMenu:");
                 Console.WriteLine($"1. Límite de goles ({this.limiteGoles})");
                 Console.WriteLine($"2. Dificultad ({difPorcentaje}%)");
-                Console.WriteLine($"3. Tamaño del campo ({this.tamañoCampo})");
+                Console.WriteLine($"3. Tamaño del campo ({this.textoTamCampo})");
                 Console.WriteLine($"4. Tamaño jugadores ({this.tamañoJugadores})");
                 Console.WriteLine($"5. Velocidad jugador ({this.velocidadJugador})");
                 Console.WriteLine($"6. Velocidad pelota ({this.velocidadPelota})");
@@ -154,27 +155,31 @@ namespace PinPongC_
 
             } while (!succes || !(dificultad >= 1) || !(dificultad <= 5));
 
-            //TODO
             switch (dificultad)
             {
                 case 1:
                     this.SetSizeCampo(1);
+                    textoTamCampo = "MUY PEQUEÑO";
                     Console.WriteLine($"Tamaño del campo MUY PEQUEÑO establecido.");
                     break;
                 case 2:
                     this.SetSizeCampo(2);
+                    textoTamCampo = "PEQUEÑO";
                     Console.WriteLine($"Tamaño del campo PEQUEÑO establecido.");
                     break;
                 case 3:
                     this.SetSizeCampo(3);
+                    textoTamCampo = "NORMAL";
                     Console.WriteLine($"Tamaño del campo NORMAL establecido.");
                     break;
                 case 4:
                     this.SetSizeCampo(4);
+                    textoTamCampo = "GRANDE";
                     Console.WriteLine($"Tamaño del campo GRANDE establecido.");
                     break;
                 case 5:
                     this.SetSizeCampo(5);
+                    textoTamCampo = "MUY GRANDE";
                     Console.WriteLine($"Tamaño del campo MUY GRANDE establecido.");
                     break;
             }
