@@ -13,19 +13,48 @@ namespace PinPongC_
         {
             x = 25;
             y = 9;
-            velocidad = 150;
             tablero = new char[y, x];
         }
-        public Tablero(int y, int x)//Constructor que permite parámetros.
-        {
-            this.x = x;
-            this.y = y;
-            tablero = new char[y, x];
-        }
-        public char[,] getTablero() => tablero;//Geter, obtiene la matriz desde el objeto que se ha incovado, objeto de clase Tablero.
+        
+        //Geter, obtiene la matriz desde el objeto que se ha incovado, objeto de clase Tablero.
+        public char[,] getTablero() => tablero;
         public int getX() => x;
         public int getY() => y;
         public int getVelocidad() => velocidad;
+        
+        //SETTER
+        public void setXY(int tamaño)
+        {
+            //TODO
+            switch (tamaño)
+            {
+                case 1:
+                    this.x = 21;
+                    this.y = 7; 
+                    this.tablero = new char[y, x];
+                    break;
+                case 2:
+                    this.x = 23;
+                    this.y = 8;
+                    this.tablero = new char[y, x];
+                    break;
+                case 3:
+                    this.x = 25;
+                    this.y = 9;
+                    this.tablero = new char[y, x];
+                    break;
+                case 4:
+                    this.x = 27;
+                    this.y = 10;
+                    this.tablero = new char[y, x];
+                    break;
+                case 5:
+                    this.x = 29;
+                    this.y = 11;
+                    this.tablero = new char[y, x];
+                    break;
+            }
+        }
 
         //MÉTODO DE CLASE TABLERO QUE DIBUJARÁ LOS BORDES DEL MAPA/TABLERO
         public static char[,] DibujaTablero(char[,] tablero)//Método de esta clase, público pero sólo accesible invocando clase primero.
@@ -46,7 +75,7 @@ namespace PinPongC_
         }
 
         //IMPRIME EN PANTALLA LA MATRIZ
-        public static void Imprime(char[,] array, int p1Pts, int npcPts, int puntosParaGanar)
+        public static void Imprime(char[,] array, int p1Pts, int npcPts, int puntosParaGanar, int dificultad)
         {
             Console.Clear();
             for (int i = 0; i < array.GetLength(0); i++)
@@ -58,7 +87,7 @@ namespace PinPongC_
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine($"MARCADOR - BEST OF {puntosParaGanar}\nJugador({p1Pts}) - ({npcPts})");
+            Console.WriteLine($"MARCADOR - BEST OF {puntosParaGanar}\nDIFICULTAD ({dificultad}%)\nJugador({p1Pts}) - ({npcPts})");
             Console.WriteLine("Pulsa flecha arriba para subir o flecha abajo para bajar\n\nCreado por Jacob Parra Silva");
         }
     }
