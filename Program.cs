@@ -34,9 +34,19 @@ namespace PinPongC_
             bool reseteaMarcador = false;
             int marcadorP1 = 0, marcadorNpc = 0, ganador = 0, goal = 0, puntosParaGanar = 3;
 
-            menuObj.PrincipalMenu(); //Abre el menú principal
+            //Abre el menú principal, setea ajustes
+            void activadorAjustes()
+            {
+                menuObj.PrincipalMenu();
+                tablero.setXY(menuObj.getSizeCampo());
+                pelota.setPelotaY(tablero.getY() / 2);
+                yPlayer = tablero.getY() / 2;
+                matriz = Tablero.DibujaTablero(tablero.getTablero());
+            }
+
             do
             {
+                activadorAjustes();
                 //Ajustes Temporizadores
                 reloj = new Timer(Temporizador, null, 0, 300);
 
@@ -101,11 +111,11 @@ namespace PinPongC_
                     pelota.CambiaX();
 
                     //Matriz que será imprimida, jugador2 toma como parámetro la matriz devuelta por la pelota.
-                    matriz = p2.Jugador2(pelota.PosicionaPelota(matriz), pelota.getPelotaY(), tablero.getX(), pelota.getDireccionY());
+                    matriz = p2.Jugador2(pelota.PosicionaPelota(matriz), pelota.getPelotaY(), tablero.getX(), pelota.getDireccionY(), menuObj.getDificultad());
 
                     lock (lockObject) //Bloquea Imprime si ya lo está usando el do while de abajo
                     {
-                        Tablero.Imprime(matriz, marcadorP1, marcadorNpc, puntosParaGanar);
+                        Tablero.Imprime(matriz, marcadorP1, marcadorNpc, puntosParaGanar, menuObj.getDifPorcentaje());
                     }
                 }
 
@@ -119,7 +129,7 @@ namespace PinPongC_
 
                         lock (lockObject) //Bloquea Imprime si ya lo está usando el temporizador
                         {
-                            if (!menu) Tablero.Imprime(matriz, marcadorP1, marcadorNpc, puntosParaGanar);
+                            if (!menu) Tablero.Imprime(matriz, marcadorP1, marcadorNpc, puntosParaGanar, menuObj.getDifPorcentaje());
                         }
                     }
                 };
@@ -202,13 +212,6 @@ namespace PinPongC_
 
                     Console.CursorVisible = false;
                 }
-                //MÉDOTO DE PROGRAM, PARA PODER CAMBIAR LA VARIABLE menu
-                void ChangeMenuVar(bool x)
-                {
-                    if(x) menu = true;
-                    else menu = false;
-                }
-
 
                 //RESETEA A VALORES INICIALES 
                 void Reset()
@@ -221,17 +224,17 @@ namespace PinPongC_
                         pelota.setPelotaY(tablero.getY() / 2);
                         ganador = 0;
                         goal = 0;
-                        menuObj.PrincipalMenu();
+                        activadorAjustes();
                         menu = false;
 
                         reloj.Change(0, 300);
-
                     }
                     else
                     {
                         menu = false;
                         pelota.setPelotaX(tablero.getX() / 2);
                         pelota.setPelotaY(tablero.getY() / 2);
+
                         reloj.Change(0, 300);
                     }
                 }
@@ -239,7 +242,7 @@ namespace PinPongC_
 
             //TODO
             //Situación actual, seguir construyendo los menús para ajustar el juego.
-
+            
             //1- Configurar velocidades, tamaño jugador y el límite de goles.
             //2- El rebote de la pelota que no siempre sea igual*******
             //3- El jugador no aparece hasta que no pulsas una tecla

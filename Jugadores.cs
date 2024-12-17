@@ -74,10 +74,10 @@ namespace PinPongC_
 
         //MÉTODO PARA JUGADOR 2, MODIFICA POSICIÓN DE ESTE
         //Tiene 50% posibilidades de acertar la posición de la pelota.
-        public char[,] Jugador2(char[,] jugador, int pelotaY, int tableroX, int direccionPelota)
+        public char[,] Jugador2(char[,] jugador, int pelotaY, int tableroX, int direccionPelota, int dificultad)
         {
             Random random = new Random();
-            int aleatorio = random.Next(1, 7);
+            int aleatorio = random.Next(1, dificultad);
             tableroX = tableroX - 2;
 
             switch (aleatorio)
@@ -85,13 +85,17 @@ namespace PinPongC_
                 case 1:
                 case 2:
                 case 3:
+                case 4:
+                case 5:
                     jugador[this.getAnteriorY(), tableroX] = ' ';
                     jugador[pelotaY, tableroX] = '|';
                     this.setAnteriorY(pelotaY);
                     break;
-                case 4:
-                case 5:
-                case 6: //Estos cases se mueve el jugador una posición más que la pelota, haciendo que esté desalineado con ella y pueda fallar.
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10: //Estos cases se mueve el jugador una posición más que la pelota, haciendo que esté desalineado con ella y pueda fallar.
                     if (direccionPelota == 1 && jugador[pelotaY -1, tableroX] != '_')
                     {
                         jugador[this.getAnteriorY(), tableroX] = ' ';

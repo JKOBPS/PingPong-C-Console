@@ -12,15 +12,16 @@ namespace PinPongC_
     internal class Menu
     {
         bool succes, succesMenu, menuProgram;
-        int limiteGoles, dificultad, tamañoCampo, tamañoJugadores, velocidadJugador, velocidadPelota;
+        int limiteGoles, dificultad, difPorcentaje, tamañoCampo, tamañoJugadores, velocidadJugador, velocidadPelota;
         string menu;
 
         public Menu()
         {
             menuProgram = false;
             limiteGoles = 3;
-            dificultad = 1;
-            tamañoCampo = 1;
+            dificultad = 9;
+            difPorcentaje = 70;
+            tamañoCampo = 3;
             tamañoJugadores = 1;
             velocidadJugador = 1;
             velocidadPelota = 1;
@@ -34,7 +35,7 @@ namespace PinPongC_
                 Console.WriteLine("CONSOLE PING-PONG | CSharp\n");
                 Console.WriteLine("ESCRIBE START PARA JUGAR\n\nMenu:");
                 Console.WriteLine($"1. Límite de goles ({this.limiteGoles})");
-                Console.WriteLine($"2. Dificultad ({this.dificultad})");
+                Console.WriteLine($"2. Dificultad ({difPorcentaje}%)");
                 Console.WriteLine($"3. Tamaño del campo ({this.tamañoCampo})");
                 Console.WriteLine($"4. Tamaño jugadores ({this.tamañoJugadores})");
                 Console.WriteLine($"5. Velocidad jugador ({this.velocidadJugador})");
@@ -104,20 +105,81 @@ namespace PinPongC_
             {
                 Console.Clear();
                 Console.WriteLine("AJUSTAR DIFICULTAD");
-                Console.WriteLine("Elige la dificultad del partido\n1. FÁCIL\n2. NORMAL\n3. DIFÍCIL");
+                Console.WriteLine("Elige la dificultad del enemigo\n1. 50%\n2. 60%\n3. 70%\n4. 80%\n5. 90%");
                 succes = int.TryParse(Console.ReadLine(), out dificultad);
 
-            } while (!succes || !(dificultad >= 1) || !(dificultad <= 3));
+            } while (!succes || !(dificultad >= 1) || !(dificultad <= 5));
 
-            this.SetDificultad(dificultad);
-            Console.WriteLine($"Nivel de dificultad {dificultad} establecido");
+            switch (dificultad)
+            {
+                case 1:
+                    this.SetDificultad(11);
+                    Console.WriteLine($"Nivel de dificultad MUY FÁCIL (50%) establecido.\nTienes más miedo que doraimon en aduanas.");
+                    difPorcentaje = 50;
+                    break;
+                case 2:
+                    this.SetDificultad(10);
+                    Console.WriteLine($"Nivel de dificultad FÁCIL (60%) establecido.");
+                    difPorcentaje = 60;
+                    break;
+                case 3:
+                    this.SetDificultad(9);
+                    Console.WriteLine($"Nivel de dificultad NORMAL (70%) establecido.");
+                    difPorcentaje = 70;
+                    break;
+                case 4:
+                    this.SetDificultad(8);
+                    Console.WriteLine($"Nivel de dificultad DIFÍCIL (80%) establecido. .");
+                    difPorcentaje = 80;
+                    break;
+                case 5:
+                    this.SetDificultad(7);
+                    Console.WriteLine($"Nivel de dificultad MUY DIFÍCIL (90%) establecido.\nEres tan duro/a que puedes descargar hardware.");
+                    difPorcentaje = 90;
+                    break;
+            }
+            
             Thread.Sleep(1500);
         }
 
-        //TODO
+        
         private void TamañoCampo()
         {
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("AJUSTAR TAMAÑO DEL CAMPO");
+                Console.WriteLine("Elige tamaño del campo:\n1. MUY PEQUEÑO\n2. PEQUEÑO\n3. NORMAL\n4. GRANDE\n5. MUY GRANDE");
+                succes = int.TryParse(Console.ReadLine(), out dificultad);
 
+            } while (!succes || !(dificultad >= 1) || !(dificultad <= 5));
+
+            //TODO
+            switch (dificultad)
+            {
+                case 1:
+                    this.SetSizeCampo(1);
+                    Console.WriteLine($"Tamaño del campo MUY PEQUEÑO establecido.");
+                    break;
+                case 2:
+                    this.SetSizeCampo(2);
+                    Console.WriteLine($"Tamaño del campo PEQUEÑO establecido.");
+                    break;
+                case 3:
+                    this.SetSizeCampo(3);
+                    Console.WriteLine($"Tamaño del campo NORMAL establecido.");
+                    break;
+                case 4:
+                    this.SetSizeCampo(4);
+                    Console.WriteLine($"Tamaño del campo GRANDE establecido.");
+                    break;
+                case 5:
+                    this.SetSizeCampo(5);
+                    Console.WriteLine($"Tamaño del campo MUY GRANDE establecido.");
+                    break;
+            }
+
+            Thread.Sleep(1500);
         }        
 
         private void TamañoJugador()
@@ -139,6 +201,7 @@ namespace PinPongC_
         public bool getMenuProgram() => this.menuProgram;
         public int getLimGol() => this.limiteGoles;
         public int getDificultad() => this.dificultad;
+        public int getDifPorcentaje() => this.difPorcentaje;
         public int getSizeCampo() => this.tamañoCampo;
         public int getSizeJugador() => this.tamañoJugadores;
         public int getVelJugador() => this.velocidadJugador;
