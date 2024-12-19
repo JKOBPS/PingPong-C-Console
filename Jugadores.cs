@@ -16,6 +16,7 @@ namespace PinPongC_
         {
             sizeP1 = 1;
             velocidad = 500;
+            y = 2;
         }
         public Jugadores(int sizeP1, int y)
         {
@@ -24,19 +25,25 @@ namespace PinPongC_
             yAnterior = 1;
         }
         //SETTER
+        public void setP1Y(int y) => this.y = y;
         public void setNpcY(int y) => this.y = y;
         public void setAnteriorY(int y) => yAnterior = y;
 
         //GETTERS
+        public int getP1Y() => y;
         public int getNpcY() => y;
         public int getAnteriorY() => yAnterior;
 
         //MÉTODO JUGADOR 1, MODIFICA LA POSICIÓN DE ESTE.
-        public static char[,] Jugador1(char[,] jugador, ref int yPlayer, int y, ref bool jugando)
+        public char[,] Jugador1(char[,] jugador, int y, ref bool reinicio, bool menu)
         {
+            
             ConsoleKeyInfo tecla1;
-            if (jugando == true)
+
+            if (reinicio != true && menu != true)
             {
+                Thread.Sleep(100);
+                int yPlayer = this.getP1Y();
                 //Recogerá la tecla si no tiene otra tecla en cola
                 do
                 {
@@ -44,30 +51,43 @@ namespace PinPongC_
                 } while (Console.KeyAvailable);
 
                 //Si la tecla es la flecha hacia abajo, añadira el carácter en una fila más
-                if (tecla1.Key != ConsoleKey.DownArrow)
+                if (tecla1.Key == ConsoleKey.UpArrow)
                 {
                     if (yPlayer == 1) jugador[yPlayer, 1] = '|'; //Se quedará en fila 1 para no llegar al borde del mapa (fila 0)
                     else
                     {
-                        jugador[yPlayer--, 1] = ' ';
-                        jugador[yPlayer, 1] = '|';
+                        this.setAnteriorY(yPlayer);
+                        this.setP1Y(--yPlayer);
+                        jugador[this.getAnteriorY(), 1] = ' ';
+                        jugador[this.getP1Y(), 1] = '|';
                     }
                 }
                 //Si la tecla es la flecha hacia arriba, añadira el carácter en fila menos
-                if (tecla1.Key != ConsoleKey.UpArrow)
+                if (tecla1.Key == ConsoleKey.DownArrow)
                 {
                     if (yPlayer == y - 2) jugador[yPlayer, 1] = '|'; //Se quedará en fila 9 para no llegar al borde del mapa (fila 10)
                     else
                     {
-                        jugador[yPlayer++, 1] = ' ';
-                        jugador[yPlayer, 1] = '|';
+                        this.setAnteriorY(yPlayer);
+                        this.setP1Y(++yPlayer);
+                        jugador[this.getAnteriorY(), 1] = ' ';
+                        jugador[this.getP1Y(), 1] = '|';
                     }
+                }
+                if (tecla1.Key == ConsoleKey.Escape)
+                {
+                    Program.reloj.Change(Timeout.Infinite, Timeout.Infinite);
+                    Program.menu = true;
+                    Program.menuObj.MenuPausa();
                 }
             }
             else
             {
-                jugador[yPlayer, 1] = '|';
-                jugando = true;
+                this.setAnteriorY(this.getP1Y());
+                jugador[this.getAnteriorY(), 1] = ' ';
+                this.setP1Y(y / 2);
+                jugador[this.getP1Y(), 1] = '|';
+                reinicio = false;
             }
             return jugador;
         }

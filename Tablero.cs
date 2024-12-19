@@ -11,7 +11,7 @@ namespace PinPongC_
         //CONSTRUCTORES DE LA CLASE TABLERO
         public Tablero()//constructor predeterminado.
         {
-            x = 25;
+            x = 21;
             y = 9;
             tablero = new char[y, x];
         }
@@ -77,17 +77,18 @@ namespace PinPongC_
         public static void Imprime(char[,] array, int p1Pts, int npcPts, int puntosParaGanar, int dificultad)
         {
             Console.SetCursorPosition(0, 0);
+            Console.WriteLine($"---------MARCADOR---------\nJugador ({p1Pts}) - ({npcPts}) NpcRival");
+            
             for (int i = 0; i < array.GetLength(0); i++)
             {
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
-                    if (array[i, j] != null) Console.Write(array[i, j]);
-
+                    Console.Write(array[i, j]);
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine($"MARCADOR\nJugador({p1Pts}) - ({npcPts})\nPRIMERO EN MARCAR {puntosParaGanar} GOL/ES\nDIFICULTAD ({dificultad}%)");
-            Console.WriteLine("\nPulsa flecha arriba para subir o flecha abajo para bajar\n\nCreado por Jacob Parra Silva");
+            Console.WriteLine($"\nPRIMERO EN MARCAR {puntosParaGanar} GOL/ES\nDIFICULTAD ({dificultad}%)");
+            Console.WriteLine("\nFlecha arriba/abajo para moverte\nESC: Menú de pausa\nCreado por Jacob Parra Silva");
         }
     }
 }

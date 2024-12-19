@@ -33,7 +33,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
+          "DockedWidth": 226,
           "SelectedChildIndex": 0,
           "Children": [
             {
@@ -44,9 +44,22 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAOcAAAAAAAAAAAAwwP0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAPYAAAAAAAAAAAAAABgBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-22T16:55:59.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Tablero.cs",
+              "DocumentMoniker": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Tablero.cs",
+              "RelativeDocumentMoniker": "Tablero.cs",
+              "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Tablero.cs",
+              "RelativeToolTip": "Tablero.cs",
+              "ViewState": "AgIAADkAAAAAAAAAAAAmwFoAAAB2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T18:04:31.93Z",
               "EditorCaption": ""
             },
             {
@@ -57,33 +70,9 @@
               "RelativeDocumentMoniker": "Pelota.cs",
               "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Pelota.cs",
               "RelativeToolTip": "Pelota.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAmwDsAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAK4AAAAAAAAAAAAmwFsAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-29T19:35:43.23Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Jugadores.cs",
-              "DocumentMoniker": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Jugadores.cs",
-              "RelativeDocumentMoniker": "Jugadores.cs",
-              "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Jugadores.cs",
-              "RelativeToolTip": "Jugadores.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAuwFsAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-29T18:05:34.103Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Tablero.cs",
-              "DocumentMoniker": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Tablero.cs",
-              "RelativeDocumentMoniker": "Tablero.cs",
-              "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Tablero.cs",
-              "RelativeToolTip": "Tablero.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFIAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-29T18:04:31.93Z"
             },
             {
               "$type": "Document",
@@ -93,9 +82,22 @@
               "RelativeDocumentMoniker": "Puntos.cs",
               "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Puntos.cs",
               "RelativeToolTip": "Puntos.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAqwBgAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-02T15:19:43.43Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Jugadores.cs",
+              "DocumentMoniker": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Jugadores.cs",
+              "RelativeDocumentMoniker": "Jugadores.cs",
+              "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Jugadores.cs",
+              "RelativeToolTip": "Jugadores.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAkwEsAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-29T18:05:34.103Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -105,9 +107,10 @@
               "RelativeDocumentMoniker": "Menu.cs",
               "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Menu.cs",
               "RelativeToolTip": "Menu.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAiwKAAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAAMAAAAAAAAAAAAAAALMAAABbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T21:02:03.922Z"
+              "WhenOpened": "2024-12-14T21:02:03.922Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -9,7 +10,7 @@ namespace PinPongC_
 {
     internal class Pelota
     {
-        int x, y, direccionX, direccionY, yAnterior, xAnterior;
+        int x, y, direccionX, direccionY, comportamiento, yAnterior, xAnterior, contador;
         Program acceso = new Program();
 
         //CONSTRUCTORES
@@ -21,6 +22,8 @@ namespace PinPongC_
             direccionY = 1;
             xAnterior = 5;
             yAnterior = 5;
+            comportamiento = 3;
+            contador = 0;
         }
         public Pelota(int y, int x)
         {
@@ -30,9 +33,23 @@ namespace PinPongC_
             direccionY = 1;
             xAnterior = 5;
             yAnterior = 5;
+            comportamiento = 3;
+            contador = 0;
         }
 
         //SETTERS
+        public void setContador()
+        {
+            this.contador++;
+        }
+        public void ResetContador()
+        {
+            contador = 0;
+        }
+        public void setComportamiento(int comportamiento)
+        {
+            this.comportamiento = comportamiento;
+        }
         public void setPelotaY(int y) 
         {
             this.y = y;
@@ -58,6 +75,8 @@ namespace PinPongC_
             this.yAnterior = y;
         }
         //GETTERS
+        public int getContador() => contador;
+        public int getComportamiento() => comportamiento;
         public int getDireccionX() => direccionX;
         public int getDireccionY() => direccionY;
         public int getPelotaX() => x;
@@ -79,12 +98,102 @@ namespace PinPongC_
         public void CambiaX()
         {
             if (this.getDireccionX() == 1) this.setPelotaX(this.getPelotaX()-1);
-            else this.setPelotaX(this.getPelotaX() + 1);
+            else if (this.getDireccionX() == 2) this.setPelotaX(this.getPelotaX() + 1);
         }
-        public void CambiaY()
+        public void CambiaY(int comportamiento)
         {
-            if (this.getDireccionY() == 1) this.setPelotaY(this.getPelotaY() - 1);
-            else this.setPelotaY(this.getPelotaY() + 1);
+            //Comportamiento de la pelota es el tipo de movimiento que hace, más vertical, mas diagonal o más recto.
+            switch(comportamiento)
+            {
+                case 1:
+                    if (this.getDireccionY() == 1) this.setPelotaY(this.getPelotaY() - 1);
+                    else if (this.getDireccionY() == 2) this.setPelotaY(this.getPelotaY() + 1);
+                    break;
+                case 2:
+                    if (this.getDireccionY() == 1)
+                    {
+                        if (contador < 1)
+                        {
+                            this.setPelotaY(this.getPelotaY());
+                            contador++;
+                        }
+                        else
+                        {
+                            this.setPelotaY(this.getPelotaY() - 1);
+                            contador = 0;
+                        }
+                    }
+                    else
+                    {
+                        if (contador < 1)
+                        {
+                            this.setPelotaY(this.getPelotaY());
+                            contador++;
+                        } else
+                        {
+                            this.setPelotaY(this.getPelotaY() + 1);
+                            contador = 0;
+                        }
+                    }
+                    break;
+                case 3:
+                    if (this.getDireccionY() == 1)
+                    {
+                        if (contador < 2)
+                        {
+                            this.setPelotaY(this.getPelotaY());
+                            contador++;
+                        }
+                        else
+                        {
+                            this.setPelotaY(this.getPelotaY() - 1);
+                            contador = 0;
+                        }
+                    }
+                    else
+                    {
+                        if (contador < 2)
+                        {
+                            this.setPelotaY(this.getPelotaY());
+                            contador++;
+                        }
+                        else
+                        {
+                            this.setPelotaY(this.getPelotaY() + 1);
+                            contador = 0;
+                        }
+                    }
+                    break;
+                case 4:
+                    if (this.getDireccionY() == 1)
+                    {
+                        if (contador < 3)
+                        {
+                            this.setPelotaY(this.getPelotaY());
+                            contador++;
+                        }
+                        else
+                        {
+                            this.setPelotaY(this.getPelotaY() - 1);
+                            contador = 0;
+                        }
+                    }
+                    else
+                    {
+                        if (contador < 3)
+                        {
+                            this.setPelotaY(this.getPelotaY());
+                            contador++;
+                        }
+                        else
+                        {
+                            this.setPelotaY(this.getPelotaY() + 1);
+                            contador = 0;
+                        }
+                    }
+                    break;
+            }
+            
         }
     }
 }

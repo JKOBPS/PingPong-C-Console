@@ -3,6 +3,7 @@ using System.CodeDom;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,44 +13,74 @@ namespace PinPongC_
 {
     internal class Program
     {
-        static Timer reloj;
+        //OBJETOS Y VARIABLES DE LA CLASE PROGRAM, GLOBALES PARA SER ACCEDIDAS POR OTRAS CLASES
+        public static Timer reloj;
+        public static Pelota pelota;
+        public static Menu menuObj;
+        public static Puntos puntos;
+        public static Tablero tablero;
+        public static int ganador;
+        public static int goal, yPlayer;
+        public static bool reseteaMarcador = false;
+        public static bool menu = false;
+        public static bool reinicio = false;
+        public static char[,] matriz;
         static readonly object lockObject = new object();//Lock para evitar que el temporizador y el jugador varien la matriz a la vez
 
+        //MÉTODOS GLOBALES, PARA PODER USARLOS EN OTRAS CLASES
+
+        //RESETEA A VALORES INICIALES 
+        public static void Reset()
+        {
+            if (reseteaMarcador == true)
+            {
+                puntos.resetPts();
+                ganador = 0;
+                goal = 0;
+                reinicio = true;
+                activadorAjustes();
+            }
+            reinicio = true;
+            pelota.setPelotaX(tablero.getX() / 2);
+            pelota.setPelotaY(tablero.getY() / 2);
+            menu = false;
+            reseteaMarcador = false;
+
+            reloj.Change(0, 150);
+        }
+        //Abre el menú principal, setea ajustes
+        public static void activadorAjustes()
+        {
+            menuObj.PrincipalMenu();
+            tablero.setXY(menuObj.getSizeCampo());
+            pelota.setPelotaY(tablero.getY() / 2);
+            pelota.setPelotaX(tablero.getX() / 2);
+            yPlayer = tablero.getY() / 2;
+            matriz = Tablero.DibujaTablero(tablero.getTablero());
+        }
+
+
+        //MAIN
         static void Main(string[] args)
         {
-            //Objetos y variables
+            //Objetos y variables LOCALES DE MAIN
             Console.CursorVisible = false;
-            Menu menuObj = new Menu();
-            Tablero tablero = new Tablero();
-            Pelota pelota = new Pelota(tablero.getY(), tablero.getX());
-            Jugadores p1 = new Jugadores();
+            menuObj = new Menu();
+            tablero = new Tablero();
+            pelota = new Pelota(tablero.getY(), tablero.getX());
+            Jugadores p1 = new Jugadores(1, tablero.getY() / 2);
             Jugadores p2 = new Jugadores(1, pelota.getDireccionY());
-            Puntos puntos = new Puntos();
+            puntos = new Puntos();
             Random random = new Random();
 
-            char[,] matriz = Tablero.DibujaTablero(tablero.getTablero());
-            int yPlayer = tablero.getY() / 2;
-            bool menu = menuObj.getMenuProgram();
-            bool jugando = false;
-            bool reseteaMarcador = false;
+            menu = menuObj.getMenuProgram();
             int marcadorP1 = 0, marcadorNpc = 0, ganador = 0, goal = 0, puntosParaGanar = 3;
-
-            //Abre el menú principal, setea ajustes
-            void activadorAjustes()
-            {
-                menuObj.PrincipalMenu();
-                tablero.setXY(menuObj.getSizeCampo());
-                pelota.setPelotaY(tablero.getY() / 2);
-                pelota.setPelotaX(tablero.getX() / 2);
-                yPlayer = tablero.getY() / 2;
-                matriz = Tablero.DibujaTablero(tablero.getTablero());
-            }
 
             do
             {
                 activadorAjustes();
                 //Ajustes Temporizadores
-                reloj = new Timer(Temporizador, null, 0, 300);
+                reloj = new Timer(Temporizador, null, 0, 150);
 
                 //MÉTODO MUEVE LA PELOTA Y AL ENEMIGO EN TORNO A ESTA AUTOMÁTICAMENTE CADA X MILISEGUNDOS
                 //EN ESTE MÉTODO SEGÚN LA POSICIÓN DE LA PELOTA, SE DETECTAN, JUGADORES, PORTERÍA, TECHOS Y SUELOS.
@@ -96,7 +127,8 @@ namespace PinPongC_
                         pelota.setDireccionX(1);
                         if (matriz[pelota.getPelotaY() - 1, pelota.getPelotaX()] != '_')//No cambia dirección si está cerca del techo o suelo
                         {
-                            pelota.setDireccionY(random.Next(1, 3)); //dirección cambia a 1 o 2 aleatoriamente
+                            pelota.setComportamiento(random.Next(1, 5));
+                            pelota.setDireccionY(random.Next(1, 3)); //dirección y comportamiento cambia  aleatoriamente
                         }
                     }
                     else if (matriz[pelota.getPelotaY(), pelota.getPelotaX() - 1] == '|')
@@ -104,16 +136,25 @@ namespace PinPongC_
                         pelota.setDireccionX(2);
                         if (matriz[pelota.getPelotaY() + 1, pelota.getPelotaX()] != '^')//No cambia dirección si está cerca del techo o suelo
                         {
-                            pelota.setDireccionY(random.Next(1, 3)); //dirección cambia a 1 o 2 aleatoriamente
+                            pelota.setComportamiento(random.Next(1, 5));
+                            pelota.setDireccionY(random.Next(1, 3)); //dirección y comportamiento cambia  aleatoriamente
                         } 
                     }
 
-                    //Cambian la dirección de Y al tocar techo o suelo
-                    if (matriz[pelota.getPelotaY() - 1, pelota.getPelotaX()] == '_') pelota.setDireccionY(2);
-                    else if (matriz[pelota.getPelotaY() + 1, pelota.getPelotaX()] == '^') pelota.setDireccionY(1);
+                    //CAMBIA LA DIRECCIÓN DE Y AL TOCAR TECHO O SUELO
+                    if (matriz[pelota.getPelotaY() - 1, pelota.getPelotaX()] == '_')
+                    {
+                        pelota.setDireccionY(2);
+                        pelota.setContador();
+                    }
+                    else if (matriz[pelota.getPelotaY() + 1, pelota.getPelotaX()] == '^')
+                    {
+                        pelota.setDireccionY(1);
+                        pelota.setContador();
+                    }
 
                     //Posición pelota se actualiza en base a los parámetros anteriores
-                    pelota.CambiaY();
+                    pelota.CambiaY(pelota.getComportamiento()); //cambia pelotaY según comportamiento
                     pelota.CambiaX();
 
                     //Matriz que será imprimida, jugador2 toma como parámetro la matriz devuelta por la pelota.
@@ -130,12 +171,11 @@ namespace PinPongC_
                 {
                     if (!menu) //primer !menu evita que el jugador haga un readkey dentro de un menú, el segundo !menu hace que si hay un readkey activo y estamos en el menú, no lo imprima.
                     {
-                        Thread.Sleep(100);//Velocidad mover jugador
-                        matriz = Jugadores.Jugador1(matriz, ref yPlayer, tablero.getY(), ref jugando);
+                        matriz = p1.Jugador1(matriz, tablero.getY(), ref reinicio, menu);
 
                         lock (lockObject) //Bloquea Imprime si ya lo está usando el temporizador
                         {
-                            if (!menu) Tablero.Imprime(matriz, marcadorP1, marcadorNpc, puntosParaGanar, menuObj.getDifPorcentaje());
+                               if (!menu) Tablero.Imprime(matriz, marcadorP1, marcadorNpc, puntosParaGanar, menuObj.getDifPorcentaje());
                         }
                     }
                 };
@@ -171,14 +211,14 @@ namespace PinPongC_
                     {
                         case 1:
                             Console.Clear();
-                            Console.WriteLine($"GOOOOOOL del Jugador\nEl marcador se posiciona {marcadorP1} a {marcadorNpc}");
-                            Thread.Sleep(1500);
+                            Console.WriteLine($"GOOOOOOL del Jugador\nEl marcador se posiciona {marcadorP1} a {marcadorNpc}\n\nPulsa dos veces para continuar");
+                            Console.ReadKey();
                             Console.Clear();
                             break;
                         case 2:
                             Console.Clear();
-                            Console.WriteLine($"GOOOOOOL del Npc\nEl marcador se posiciona {marcadorP1} a {marcadorNpc}");
-                            Thread.Sleep(1500);
+                            Console.WriteLine($"GOOOOOOL del Npc\nEl marcador se posiciona {marcadorP1} a {marcadorNpc}\n\nPulsa dos veces para continuar");
+                            Console.ReadKey();
                             Console.Clear();
                             break;
                     }
@@ -221,41 +261,20 @@ namespace PinPongC_
                     Console.CursorVisible = false;
                 }
 
-                //RESETEA A VALORES INICIALES 
-                void Reset()
-                {
-                    if (reseteaMarcador == true)
-                    {
-                        reseteaMarcador = false;
-                        puntos.resetPts();
-                        pelota.setPelotaX(tablero.getX() / 2);
-                        pelota.setPelotaY(tablero.getY() / 2);
-                        ganador = 0;
-                        goal = 0;
-                        activadorAjustes();
-                        menu = false;
-
-                        reloj.Change(0, 300);
-                    }
-                    else
-                    {
-                        menu = false;
-                        pelota.setPelotaX(tablero.getX() / 2);
-                        pelota.setPelotaY(tablero.getY() / 2);
-
-                        reloj.Change(0, 300);
-                    }
-                }
+                
             } while (true);
 
             //TODO
-            //Situación actual, seguir construyendo los menús para ajustar el juego.
+            //Situación actual, seguir construyendo menús.
+            //Tras pausar partida y volver al menú principal, algunos ajustes se bugean (tamaño campo), no actualiza al nuevo tamaño.
 
             //1- El rebote de la pelota que no siempre sea igual*******
 
             //2- Configurar velocidades, tamaño jugador y el límite de goles.
 
-            //3- El jugador no aparece hasta que no pulsas una tecla
+            //3- El jugador no aparece hasta que no pulsas una tecla.
+
+            //4- los char no son igual de altos que de ancho, lo que dá la sensación de un movimiento raro.
         }
     }
 }

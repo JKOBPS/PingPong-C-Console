@@ -27,6 +27,8 @@ namespace PinPongC_
             velocidadJugador = 1;
             velocidadPelota = 1;
         }
+
+        //Método llamado desde Program Reset(), cada vez que se reinicia un juego o se sale al menú principal. Permite ajustar los valores del juego e iniciar partida.
         public void PrincipalMenu() 
         {
             do
@@ -86,6 +88,49 @@ namespace PinPongC_
             } while (!succesMenu);
             
         }
+
+        //El método es llamado desde el método jugador1 de la clase Jugadores
+        public void MenuPausa()
+        {
+            ConsoleKeyInfo input;
+
+            Console.Clear();
+            Console.Clear();
+            Console.WriteLine("MENU PAUSA\nESC PARA SALIR\nCUALQUIER BOTON PARA RENAUDAR PARTIDA");
+            input = Console.ReadKey(intercept: true);
+
+            switch (input.Key)
+            {
+                case ConsoleKey.Escape:
+                    Program.reseteaMarcador = true;
+                    Console.Clear();
+                    Console.WriteLine("Saliendo al menú principal...");
+                    Thread.Sleep(1000);
+                    Program.Reset();
+                    break;
+                default:
+                    Console.Clear();
+
+                    Console.SetCursorPosition(0, 0);
+                    Console.WriteLine("Renaudando en:\n     3");
+                    Thread.Sleep(1000);
+
+                    Console.SetCursorPosition(0, 0);
+                    Console.WriteLine("Renaudando en:\n     2");
+                    Thread.Sleep(1000);
+
+                    Console.SetCursorPosition(0, 0);
+                    Console.WriteLine("Renaudando en:\n     1");
+                    Thread.Sleep(1000);
+
+                    Console.Clear();
+                    Program.menu = false;
+                    Program.reloj.Change(0, 150);
+                    break;
+            }
+        }
+
+        //Método llamado desde clase Menu, permite ajustar el número de goles para ganar
         private void LimiGol()
         {
             do
@@ -101,6 +146,7 @@ namespace PinPongC_
             Thread.Sleep(1500);
         }
 
+        //Método llamado desde clase Menu, permite ajustar la dificultad del enemigo
         private void Dificultad()
         {
             do
@@ -143,7 +189,7 @@ namespace PinPongC_
             Thread.Sleep(1500);
         }
 
-        
+        //Método llamado desde clase Menu, permite ajustar tamaño de campo
         private void TamañoCampo()
         {
             do
