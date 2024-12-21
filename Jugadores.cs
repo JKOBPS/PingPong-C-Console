@@ -10,17 +10,14 @@ namespace PinPongC_
 {
     internal class Jugadores
     {
-        int sizeP1, y, yAnterior, velocidad;
+        int y, yAnterior;
         
         public Jugadores ()
         {
-            sizeP1 = 1;
-            velocidad = 500;
             y = 2;
         }
-        public Jugadores(int sizeP1, int y)
+        public Jugadores(int y)
         {
-            this.sizeP1 = sizeP1;
             this.y = y;
             yAnterior = 1;
         }
@@ -74,6 +71,7 @@ namespace PinPongC_
                         jugador[this.getP1Y(), 1] = '|';
                     }
                 }
+                //Si se pulsa Esc, se pausa el juego y se llama al método MenuPausa() de la clase Menu
                 if (tecla1.Key == ConsoleKey.Escape)
                 {
                     Program.reloj.Change(Timeout.Infinite, Timeout.Infinite);
@@ -129,6 +127,15 @@ namespace PinPongC_
                     }
                     break;
             }
+            
+            if(Program.p1NoImprimido) //Imprime por primera vez al P1 en la misma posiciónY que pelota y npc
+            {
+                this.setP1Y(pelotaY);
+                jugador[this.getP1Y(), 1] = '|';
+                Program.p1NoImprimido = false;
+            }
+            
+
             return jugador;
         }
     }

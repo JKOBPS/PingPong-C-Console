@@ -28,6 +28,7 @@ namespace PinPongC_
             velocidadPelota = 1;
         }
 
+        //MENU PRINCIPAL
         //Método llamado desde Program Reset(), cada vez que se reinicia un juego o se sale al menú principal. Permite ajustar los valores del juego e iniciar partida.
         public void PrincipalMenu() 
         {
@@ -40,9 +41,7 @@ namespace PinPongC_
                 Console.WriteLine($"1. Límite de goles ({this.limiteGoles})");
                 Console.WriteLine($"2. Dificultad ({difPorcentaje}%)");
                 Console.WriteLine($"3. Tamaño del campo ({this.textoTamCampo})");
-                Console.WriteLine($"4. Tamaño jugadores ({this.tamañoJugadores})");
-                Console.WriteLine($"5. Velocidad jugador ({this.velocidadJugador})");
-                Console.WriteLine($"6. Velocidad pelota ({this.velocidadPelota})");
+                Console.WriteLine($"4. Velocidad pelota ({this.velocidadPelota})");
                 menu = Console.ReadLine().ToLower();
 
                 switch (menu)
@@ -66,14 +65,6 @@ namespace PinPongC_
                         Console.WriteLine("Opción 4 seleccionada");
                         break;
 
-                    case "5":
-                        Console.WriteLine("Opción 5 seleccionada");
-                        break;
-
-                    case "6":
-                        Console.WriteLine("Opción 6 seleccionada");
-                        break;
-
                     case "start":
                         Console.WriteLine("Iniciando el juego...");
                         SetMenProgram(true);
@@ -86,47 +77,55 @@ namespace PinPongC_
                 }
                 Console.Clear();
             } while (!succesMenu);
-            
+            this.SetMenProgram(false);
         }
 
+        //MÉTODO MENUPAUSA
         //El método es llamado desde el método jugador1 de la clase Jugadores
         public void MenuPausa()
         {
+            bool accesoMenuPausa = this.getMenuProgram(); //PARÁMETRO CAMBIADO DESDE CELEBRACIÓN DE GOL
             ConsoleKeyInfo input;
 
-            Console.Clear();
-            Console.Clear();
-            Console.WriteLine("MENU PAUSA\nESC PARA SALIR\nCUALQUIER BOTON PARA RENAUDAR PARTIDA");
-            input = Console.ReadKey(intercept: true);
-
-            switch (input.Key)
+            
+            if (!accesoMenuPausa) //Evita poder acceder al menú de pausa durante la celebración, lo que causaría bug
             {
-                case ConsoleKey.Escape:
-                    Program.reseteaMarcador = true;
-                    Console.Clear();
-                    Console.WriteLine("Saliendo al menú principal...");
-                    Thread.Sleep(1000);
-                    Program.Reset();
-                    break;
-                default:
-                    Console.Clear();
+                Console.Clear();
+                Console.Clear();
+                Console.WriteLine("----MENU PAUSA----\nESC: Salir\nCUALQUIER BOTON: Renaudar partida");
+                input = Console.ReadKey(intercept: true);
+                switch (input.Key)
+                {
+                    case ConsoleKey.Escape:
+                        Program.reseteaMarcador = true;
+                        Program.reseteaJuego = true;
+                        Console.Clear();
+                        Console.WriteLine("Saliendo al menú principal...");
+                        Thread.Sleep(1000);
+                        Program.Reset();
+                        break;
+                    default:
+                        Console.Clear();
 
-                    Console.SetCursorPosition(0, 0);
-                    Console.WriteLine("Renaudando en:\n     3");
-                    Thread.Sleep(1000);
+                        Console.SetCursorPosition(0, 0);
+                        Console.WriteLine("Renaudando en:\n     3");
+                        Thread.Sleep(1000);
 
-                    Console.SetCursorPosition(0, 0);
-                    Console.WriteLine("Renaudando en:\n     2");
-                    Thread.Sleep(1000);
+                        Console.SetCursorPosition(0, 0);
+                        Console.WriteLine("Renaudando en:\n     2");
+                        Thread.Sleep(1000);
 
-                    Console.SetCursorPosition(0, 0);
-                    Console.WriteLine("Renaudando en:\n     1");
-                    Thread.Sleep(1000);
+                        Console.SetCursorPosition(0, 0);
+                        Console.WriteLine("Renaudando en:\n     1");
+                        Thread.Sleep(1000);
 
-                    Console.Clear();
-                    Program.menu = false;
-                    Program.reloj.Change(0, 150);
-                    break;
+                        Console.Clear();
+                        Tablero.Imprime(Program.matriz, Program.puntos.getJugadorPts(), Program.puntos.getNpcPts(), this.limiteGoles, this.getDifPorcentaje());
+                        Thread.Sleep(1000);
+                        Program.menu = false;
+                        Program.reloj.Change(0, 150);
+                        break;
+                }
             }
         }
 
@@ -232,17 +231,7 @@ namespace PinPongC_
 
             Thread.Sleep(1500);
         }        
-
-        private void TamañoJugador()
-        {
-
-        }
-
-        private void VelocidadJugador()
-        {
-
-        }
-
+        //TODO
         private void VelocidadPelota()
         {
 
@@ -254,13 +243,11 @@ namespace PinPongC_
         public int getDificultad() => this.dificultad;
         public int getDifPorcentaje() => this.difPorcentaje;
         public int getSizeCampo() => this.tamañoCampo;
-        public int getSizeJugador() => this.tamañoJugadores;
-        public int getVelJugador() => this.velocidadJugador;
         public int getVelPelota() => this.velocidadPelota;
 
 
         //SETTER
-        private void SetMenProgram(bool menuProgram)
+        public void SetMenProgram(bool menuProgram)
         {
             this.menuProgram = menuProgram;
         }
@@ -274,14 +261,6 @@ namespace PinPongC_
         private void SetSizeCampo(int tamañoCampo)
         {
             this.tamañoCampo= tamañoCampo;
-        }
-        private void SettSizeJugador(int tamañoJugadores)
-        {
-            this.tamañoJugadores = tamañoJugadores;
-        }
-        private void SetVelJugador(int velocidadJugador)
-        {
-            this.velocidadJugador= velocidadJugador;
         }
         private void SetVelPelota(int velocidadPelota)
         {

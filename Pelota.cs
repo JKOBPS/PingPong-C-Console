@@ -88,7 +88,7 @@ namespace PinPongC_
         public char[,] PosicionaPelota(char[,] matriz)
         {
             //Pone asterisco en la nueva posición, y pone espacio en la anterior posición
-            matriz[this.getPelotaY(), this.getPelotaX()] = 'o';
+            matriz[this.getPelotaY(), this.getPelotaX()] = 'O';
             matriz[this.getAnteriorY(), this.getAnteriorX()] = ' ';
             //Setea pelota.anteriorY/X como la actual pelota.Y/X
             this.setAnteriorY(this.getPelotaY());
@@ -97,12 +97,13 @@ namespace PinPongC_
         }
         public void CambiaX()
         {
-            if (this.getDireccionX() == 1) this.setPelotaX(this.getPelotaX()-1);
+            if (this.getDireccionX() == 1) this.setPelotaX(this.getPelotaX() - 1);
             else if (this.getDireccionX() == 2) this.setPelotaX(this.getPelotaX() + 1);
         }
         public void CambiaY(int comportamiento)
         {
             //Comportamiento de la pelota es el tipo de movimiento que hace, más vertical, mas diagonal o más recto.
+            //El contador hace que siga moviendose en X pero no en Y, cuando contador llegue al límite movera Y, y resetea contador.
             switch(comportamiento)
             {
                 case 1:
@@ -193,7 +194,6 @@ namespace PinPongC_
                     }
                     break;
             }
-            
         }
     }
 }
