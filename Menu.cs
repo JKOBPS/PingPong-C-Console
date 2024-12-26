@@ -13,7 +13,7 @@ namespace PinPongC_
     {
         bool succes, succesMenu, menuProgram;
         int limiteGoles, dificultad, difPorcentaje, tamañoCampo, tamañoJugadores, velocidadJugador, velocidadPelota;
-        string menu, textoTamCampo;
+        string menu, textoTamCampo, velocidadPelotaText;
 
         public Menu()
         {
@@ -23,9 +23,8 @@ namespace PinPongC_
             difPorcentaje = 70;
             tamañoCampo = 3;
             textoTamCampo = "NORMAL";
-            tamañoJugadores = 1;
-            velocidadJugador = 1;
-            velocidadPelota = 1;
+            velocidadPelota = 150;
+            velocidadPelotaText = "NORMAL";
         }
 
         //MENU PRINCIPAL
@@ -41,7 +40,7 @@ namespace PinPongC_
                 Console.WriteLine($"1. Límite de goles ({this.limiteGoles})");
                 Console.WriteLine($"2. Dificultad ({difPorcentaje}%)");
                 Console.WriteLine($"3. Tamaño del campo ({this.textoTamCampo})");
-                Console.WriteLine($"4. Velocidad pelota ({this.velocidadPelota})");
+                Console.WriteLine($"4. Velocidad del juego ({this.velocidadPelotaText})");
                 menu = Console.ReadLine().ToLower();
 
                 switch (menu)
@@ -63,10 +62,14 @@ namespace PinPongC_
 
                     case "4":
                         Console.WriteLine("Opción 4 seleccionada");
+                        VelocidadPelota();
                         break;
 
                     case "start":
-                        Console.WriteLine("Iniciando el juego...");
+                        Console.WriteLine("\nIniciando el juego...");
+                        Program.activadorAjustes();//Actualiza ajustes seleccionados por ususario
+                        //Program.reiniciarTemporizador = true;
+                        Thread.Sleep(1000);
                         SetMenProgram(true);
                         succesMenu = true;
                         break;
@@ -135,8 +138,8 @@ namespace PinPongC_
             do
             {
                 Console.Clear();
-                Console.WriteLine("AJUSTAR LÍMITE DE GOLES");
-                Console.WriteLine("Escribe cuantos goles quieres que sea el límite (mínimo 1)");
+                Console.WriteLine("---AJUSTAR LÍMITE DE GOLES---");
+                Console.WriteLine($"\nEscribe cuantos goles quieres que sea el límite (mínimo 1)\n\nActualmente: {this.getLimGol()} gol/es");
                 succes = int.TryParse(Console.ReadLine(), out limiteGoles);
 
             } while (!succes || limiteGoles < 1);
@@ -151,8 +154,8 @@ namespace PinPongC_
             do
             {
                 Console.Clear();
-                Console.WriteLine("AJUSTAR DIFICULTAD");
-                Console.WriteLine("Elige la dificultad del enemigo\n1. 50%\n2. 60%\n3. 70%\n4. 80%\n5. 90%");
+                Console.WriteLine("---AJUSTAR DIFICULTAD---");
+                Console.WriteLine($"\nElige la DIFICULTAD del enemigo\n1. 50%\n2. 60%\n3. 70%\n4. 80%\n5. 90%\n\nActualmente: {difPorcentaje}% ");
                 succes = int.TryParse(Console.ReadLine(), out dificultad);
 
             } while (!succes || !(dificultad >= 1) || !(dificultad <= 5));
@@ -194,8 +197,8 @@ namespace PinPongC_
             do
             {
                 Console.Clear();
-                Console.WriteLine("AJUSTAR TAMAÑO DEL CAMPO");
-                Console.WriteLine("Elige tamaño del campo:\n1. MUY PEQUEÑO\n2. PEQUEÑO\n3. NORMAL\n4. GRANDE\n5. MUY GRANDE");
+                Console.WriteLine("---AJUSTAR TAMAÑO DEL CAMPO---");
+                Console.WriteLine($"\nElige TAMAÑO del CAMPO:\n1. MUY PEQUEÑO\n2. PEQUEÑO\n3. NORMAL\n4. GRANDE\n5. MUY GRANDE\n\nActualmente: {textoTamCampo}");
                 succes = int.TryParse(Console.ReadLine(), out tamañoCampo);
 
             } while (!succes || !(tamañoCampo >= 1) || !(tamañoCampo <= 5));
@@ -231,10 +234,36 @@ namespace PinPongC_
 
             Thread.Sleep(1500);
         }        
-        //TODO
+        //Menú para cambiar la velocidad de pelota
         private void VelocidadPelota()
         {
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("---AJUSTAR VELOCIDAD DEL JUEGO---");
+                Console.WriteLine($"\nElige VELOCIDAD del partido:\n1. LENTO\n2. NORMAL\n3. RÁPIDO\n\nActualmente: {velocidadPelotaText}");
+                succes = int.TryParse(Console.ReadLine(), out velocidadPelota);
 
+            } while (!succes || !(velocidadPelota >= 1) || !(velocidadPelota <= 3));
+
+            switch (velocidadPelota)
+            {
+                case 1:
+                    this.SetVelPelota(200);
+                    velocidadPelotaText = "LENTO";
+                    Console.WriteLine($"Velocidad de juego LENTO establecido.");
+                    break;
+                case 2:
+                    this.SetVelPelota(150);
+                    velocidadPelotaText = "NORMAL";
+                    Console.WriteLine($"Velocidad de juego NORMAL establecido.");
+                    break;
+                case 3:
+                    this.SetVelPelota(100);
+                    velocidadPelotaText = "RÁPIDO";
+                    Console.WriteLine($"Velocidad de juego RÁPIDO establecido.");
+                    break;
+            }
         }
 
         //GETTER
@@ -244,6 +273,7 @@ namespace PinPongC_
         public int getDifPorcentaje() => this.difPorcentaje;
         public int getSizeCampo() => this.tamañoCampo;
         public int getVelPelota() => this.velocidadPelota;
+        public string getVelPelotaText() => this.velocidadPelotaText;
 
 
         //SETTER

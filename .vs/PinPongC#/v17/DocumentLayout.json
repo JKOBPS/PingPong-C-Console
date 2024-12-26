@@ -7,24 +7,24 @@
       "RelativeMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\jugadores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|solutionrelative:jugadores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\pelota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|solutionrelative:pelota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\tablero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|c:\\users\\jacob\\source\\repos\\pingpong-c-console\\tablero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|solutionrelative:tablero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|c:\\users\\jacob\\source\\repos\\pingpong-c-console\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|solutionrelative:menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\puntos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|c:\\users\\jacob\\source\\repos\\pingpong-c-console\\pelota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|solutionrelative:pelota.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|c:\\users\\jacob\\source\\repos\\pingpong-c-console\\puntos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|solutionrelative:puntos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|c:\\users\\jacob\\source\\repos\\pingpong-c-console\\jugadores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4EE8DF2-953D-4A12-8C04-C259E0A08E62}|PinPongC#.csproj|solutionrelative:jugadores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,7 +33,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 226,
+          "DockedWidth": 200,
           "SelectedChildIndex": 0,
           "Children": [
             {
@@ -44,74 +44,74 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAABUBAAAAAAAAAAAQwDkBAABVAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAowAcAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-22T16:55:59.57Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Tablero.cs",
-              "DocumentMoniker": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Tablero.cs",
-              "RelativeDocumentMoniker": "Tablero.cs",
-              "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Tablero.cs",
-              "RelativeToolTip": "Tablero.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAAAE0AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-29T18:04:31.93Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Pelota.cs",
-              "DocumentMoniker": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Pelota.cs",
-              "RelativeDocumentMoniker": "Pelota.cs",
-              "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Pelota.cs",
-              "RelativeToolTip": "Pelota.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwFcAAAA2AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-29T19:35:43.23Z",
+              "WhenOpened": "2024-12-26T14:15:54.135Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Jugadores.cs",
-              "DocumentMoniker": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Jugadores.cs",
-              "RelativeDocumentMoniker": "Jugadores.cs",
-              "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Jugadores.cs",
-              "RelativeToolTip": "Jugadores.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAYwIUAAAAwAAAAAAAAAA==",
+              "Title": "Tablero.cs",
+              "DocumentMoniker": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Tablero.cs",
+              "RelativeDocumentMoniker": "Tablero.cs",
+              "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Tablero.cs",
+              "RelativeToolTip": "Tablero.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-29T18:05:34.103Z",
+              "WhenOpened": "2024-12-26T14:15:55.464Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Puntos.cs",
-              "DocumentMoniker": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Puntos.cs",
-              "RelativeDocumentMoniker": "Puntos.cs",
-              "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Puntos.cs",
-              "RelativeToolTip": "Puntos.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAARAAAAAAAAAA==",
+              "Title": "Jugadores.cs",
+              "DocumentMoniker": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Jugadores.cs",
+              "RelativeDocumentMoniker": "Jugadores.cs",
+              "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Jugadores.cs",
+              "RelativeToolTip": "Jugadores.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-02T15:19:43.43Z",
+              "WhenOpened": "2024-12-26T14:15:43.8Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Pelota.cs",
+              "DocumentMoniker": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Pelota.cs",
+              "RelativeDocumentMoniker": "Pelota.cs",
+              "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Pelota.cs",
+              "RelativeToolTip": "Pelota.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T14:15:53.539Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Puntos.cs",
+              "DocumentMoniker": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Puntos.cs",
+              "RelativeDocumentMoniker": "Puntos.cs",
+              "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Puntos.cs",
+              "RelativeToolTip": "Puntos.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-26T14:15:54.857Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Menu.cs",
               "DocumentMoniker": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Menu.cs",
               "RelativeDocumentMoniker": "Menu.cs",
               "ToolTip": "C:\\Users\\jacob\\source\\repos\\PingPong-C-Console\\Menu.cs",
               "RelativeToolTip": "Menu.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAAAGcAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T21:02:03.922Z",
+              "WhenOpened": "2024-12-26T14:15:47.992Z",
               "EditorCaption": ""
             }
           ]

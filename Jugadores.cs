@@ -74,15 +74,16 @@ namespace PinPongC_
                 //Si se pulsa Esc, se pausa el juego y se llama al método MenuPausa() de la clase Menu
                 if (tecla1.Key == ConsoleKey.Escape)
                 {
-                    Program.reloj.Change(Timeout.Infinite, Timeout.Infinite);
                     Program.menu = true;
+                    Program.reloj.Change(Timeout.Infinite, Timeout.Infinite);
                     Program.menuObj.MenuPausa();
+                    if (Program.reseteaJuego) return Program.matriz;
                 }
             }
             else
             {
                 this.setAnteriorY(this.getP1Y());
-                jugador[this.getAnteriorY(), 1] = ' ';
+                if (!(this.getAnteriorY() > Program.tablero.getY() - 2)) jugador[this.getAnteriorY(), 1] = ' ';
                 this.setP1Y(y / 2);
                 jugador[this.getP1Y(), 1] = '|';
                 reinicio = false;
@@ -105,7 +106,7 @@ namespace PinPongC_
                 case 3:
                 case 4:
                 case 5:
-                    jugador[this.getAnteriorY(), tableroX] = ' ';
+                    if (!(this.getAnteriorY() > Program.tablero.getY() - 2)) jugador[this.getAnteriorY(), tableroX] = ' ';
                     jugador[pelotaY, tableroX] = '|';
                     this.setAnteriorY(pelotaY);
                     break;
@@ -116,12 +117,12 @@ namespace PinPongC_
                 case 10: //Estos cases se mueve el jugador una posición más que la pelota, haciendo que esté desalineado con ella y pueda fallar.
                     if (direccionPelota == 1 && jugador[pelotaY -1, tableroX] != '_')
                     {
-                        jugador[this.getAnteriorY(), tableroX] = ' ';
+                        if (!(this.getAnteriorY() > Program.tablero.getY() - 2)) jugador[this.getAnteriorY(), tableroX] = ' ';
                         jugador[pelotaY - 1, tableroX] = '|';
                         this.setAnteriorY(pelotaY - 1);
                     } else if (direccionPelota == 2 && jugador[pelotaY + 1, tableroX] != '^')
     {
-                        jugador[this.getAnteriorY(), tableroX] = ' ';
+                        if (!(this.getAnteriorY() > Program.tablero.getY() - 2)) jugador[this.getAnteriorY(), tableroX] = ' ';
                         jugador[pelotaY + 1, tableroX] = '|';
                         this.setAnteriorY(pelotaY + 1);
                     }
@@ -130,8 +131,8 @@ namespace PinPongC_
             
             if(Program.p1NoImprimido) //Imprime por primera vez al P1 en la misma posiciónY que pelota y npc
             {
-                this.setP1Y(pelotaY);
-                jugador[this.getP1Y(), 1] = '|';
+                Program.p1.setP1Y(pelotaY);
+                jugador[pelotaY, 1] = '|';
                 Program.p1NoImprimido = false;
             }
             

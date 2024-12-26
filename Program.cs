@@ -19,6 +19,7 @@ namespace PinPongC_
         public static Menu menuObj;
         public static Puntos puntos;
         public static Tablero tablero;
+        public static Jugadores p1;
         public static int ganador;
         public static int goal, yPlayer;
         public static bool reseteaMarcador = false;
@@ -26,6 +27,7 @@ namespace PinPongC_
         public static bool reinicio = false;
         public static bool p1NoImprimido = true;
         public static bool reseteaJuego = false;
+        public static bool reiniciarTemporizador = false;
         public static char[,] matriz;
         static readonly object lockObject = new object();//Lock para evitar que el temporizador y el jugador varien la matriz a la vez
 
@@ -40,24 +42,25 @@ namespace PinPongC_
                 ganador = 0;
                 goal = 0;
                 reinicio = true;
-                activadorAjustes();
+                menuObj.PrincipalMenu();
+            } 
+            else
+            {
+                reinicio = true;
+                pelota.setPelotaX(tablero.getX() / 2);
+                pelota.setPelotaY(tablero.getY() / 2);   
             }
-            reinicio = true;
-            pelota.setPelotaX(tablero.getX() / 2);
-            pelota.setPelotaY(tablero.getY() / 2);
             menu = false;
             reseteaMarcador = false;
-
-            reloj.Change(0, 150);
+            reloj.Change(0, menuObj.getVelPelota());
         }
-        //Abre el menú principal, setea ajustes
+        //Setea ajustes, Se llama al iniciar partida
         public static void activadorAjustes()
         {
-            menuObj.PrincipalMenu();
             tablero.setXY(menuObj.getSizeCampo());
             pelota.setPelotaY(tablero.getY() / 2);
             pelota.setPelotaX(tablero.getX() / 2);
-            yPlayer = pelota.getPelotaY();
+            yPlayer = tablero.getY() / 2;
             matriz = Tablero.DibujaTablero(tablero.getTablero());
         }
 
@@ -70,7 +73,7 @@ namespace PinPongC_
             menuObj = new Menu();
             tablero = new Tablero();
             pelota = new Pelota(tablero.getY(), tablero.getX());
-            Jugadores p1 = new Jugadores(tablero.getY() / 2);
+            p1 = new Jugadores(tablero.getY() / 2);
             Jugadores p2 = new Jugadores(pelota.getDireccionY());
             puntos = new Puntos();
             Random random = new Random();
@@ -80,10 +83,11 @@ namespace PinPongC_
 
             do
             {
-                activadorAjustes();
+                
+                menuObj.PrincipalMenu();
 
                 //Ajustes Temporizadores
-                reloj = new Timer(Temporizador, null, 0, 150);
+                reloj = new Timer(Temporizador, null, 0, menuObj.getVelPelota());
 
                 //MÉTODO MUEVE LA PELOTA Y AL ENEMIGO EN TORNO A ESTA AUTOMÁTICAMENTE CADA X MILISEGUNDOS
                 //EN ESTE MÉTODO SEGÚN LA POSICIÓN DE LA PELOTA, SE DETECTAN, JUGADORES, PORTERÍA, TECHOS Y SUELOS.
@@ -92,15 +96,6 @@ namespace PinPongC_
                     marcadorP1 = puntos.getJugadorPts();
                     marcadorNpc = puntos.getNpcPts();
                     puntosParaGanar = menuObj.getLimGol();
-
-                    if (reseteaJuego) //Si se ha reseteado la partida cogemos de nuevo la matriz con el tamaño actual del tablero.
-                    {
-                        matriz = Tablero.DibujaTablero(tablero.getTablero());
-                        tablero.setXY(menuObj.getSizeCampo());
-                        pelota.setPelotaY(tablero.getY() / 2);
-                        pelota.setPelotaX(tablero.getX() / 2);
-                        yPlayer = pelota.getPelotaY();
-                    }
 
                     //IF y ELSE IF, DETECTA SI SE HA MARCADO GOL EN UNA U OTRA PORTERÍA Y LE DA EL GOL AL QUE LO HA METIDO,
                     //ADEMÁS COMPRUEBA SI HA LLEGADO AL LÍMITE DE PUNTUACIÓN, PARA FINALIZAR O CONTINUAR PARTIDO
@@ -162,18 +157,18 @@ namespace PinPongC_
                     if (matriz[pelota.getPelotaY(), pelota.getPelotaX() + 1] == '|')
                     {
                         pelota.setDireccionX(1);
+                        pelota.setComportamiento(random.Next(1, 6));
                         if (matriz[pelota.getPelotaY() - 1, pelota.getPelotaX()] != '_')//No cambia dirección si está cerca del techo o suelo
                         {
-                            pelota.setComportamiento(random.Next(1, 5));
                             pelota.setDireccionY(random.Next(1, 3)); //dirección y comportamiento cambia  aleatoriamente
                         }
                     }
                     else if (matriz[pelota.getPelotaY(), pelota.getPelotaX() - 1] == '|')
                     {
                         pelota.setDireccionX(2);
+                        pelota.setComportamiento(random.Next(1, 6));
                         if (matriz[pelota.getPelotaY() + 1, pelota.getPelotaX()] != '^')//No cambia dirección si está cerca del techo o suelo
                         {
-                            pelota.setComportamiento(random.Next(1, 5));
                             pelota.setDireccionY(random.Next(1, 3)); //dirección y comportamiento cambia  aleatoriamente
                         } 
                     }
@@ -195,11 +190,13 @@ namespace PinPongC_
                     pelota.CambiaX();
 
                     //Matriz que será imprimida, jugador2 toma como parámetro la matriz devuelta por la pelota.
-                    matriz = p2.Jugador2(pelota.PosicionaPelota(matriz), pelota.getPelotaY(), tablero.getX(), pelota.getDireccionY(), menuObj.getDificultad());
-
-                    lock (lockObject) //Bloquea Imprime si ya lo está usando el do while de abajo
+                    if (!menu)
                     {
-                        Tablero.Imprime(matriz, marcadorP1, marcadorNpc, puntosParaGanar, menuObj.getDifPorcentaje());
+                        matriz = p2.Jugador2(pelota.PosicionaPelota(matriz), pelota.getPelotaY(), tablero.getX(), pelota.getDireccionY(), menuObj.getDificultad());
+                        lock (lockObject) //Bloquea Imprime si ya se está usando en otro lado del programa
+                        {
+                            if (!menu) Tablero.Imprime(matriz, marcadorP1, marcadorNpc, puntosParaGanar, menuObj.getDifPorcentaje());
+                        }
                     }
                 }
 
@@ -301,21 +298,9 @@ namespace PinPongC_
                             Environment.Exit(0);
                             break;
                     }
-
                     Console.CursorVisible = false;
                 }
-
-                
             } while (true);
-
-            //TODO
-            //Situación actual, seguir construyendo menús.
-            //Si inicias partida cambiando el tamaño del campo, el jugador visualmente está en un sitio, pero realmente está en otro.
-            //Se sigue bugueando cambiar el tamaño del campo al volver del menupausa.
-            //1- Mejoras en el rebote de la pelota, más patrones.
-            //2- los char no son igual de altos que de ancho, lo que dá la sensación de un movimiento raro de la pelota.
-            //3- Configurar velocidades.
-
         }
     }
 }

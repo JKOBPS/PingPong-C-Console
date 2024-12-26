@@ -32,7 +32,7 @@ namespace PinPongC_
             direccionX = 1;
             direccionY = 1;
             xAnterior = 5;
-            yAnterior = 5;
+            yAnterior = 3;
             comportamiento = 3;
             contador = 0;
         }
@@ -87,9 +87,9 @@ namespace PinPongC_
         //MÉTODO PARA MOVER LA PELOTA
         public char[,] PosicionaPelota(char[,] matriz)
         {
-            //Pone asterisco en la nueva posición, y pone espacio en la anterior posición
+            //Pone pelota en la nueva posición, y pone espacio en la anterior posición
             matriz[this.getPelotaY(), this.getPelotaX()] = 'O';
-            matriz[this.getAnteriorY(), this.getAnteriorX()] = ' ';
+            if (!(this.getAnteriorY() > Program.tablero.getY() - 2 || this.getAnteriorX() > Program.tablero.getX() - 2)) matriz[this.getAnteriorY(), this.getAnteriorX()] = ' ';
             //Setea pelota.anteriorY/X como la actual pelota.Y/X
             this.setAnteriorY(this.getPelotaY());
             this.setAnteriorX(this.getPelotaX());
@@ -100,11 +100,11 @@ namespace PinPongC_
             if (this.getDireccionX() == 1) this.setPelotaX(this.getPelotaX() - 1);
             else if (this.getDireccionX() == 2) this.setPelotaX(this.getPelotaX() + 1);
         }
-        public void CambiaY(int comportamiento)
+        public void CambiaY(int comportamientoY)
         {
             //Comportamiento de la pelota es el tipo de movimiento que hace, más vertical, mas diagonal o más recto.
             //El contador hace que siga moviendose en X pero no en Y, cuando contador llegue al límite movera Y, y resetea contador.
-            switch(comportamiento)
+            switch(comportamientoY)
             {
                 case 1:
                     if (this.getDireccionY() == 1) this.setPelotaY(this.getPelotaY() - 1);
@@ -182,6 +182,34 @@ namespace PinPongC_
                     else
                     {
                         if (contador < 3)
+                        {
+                            this.setPelotaY(this.getPelotaY());
+                            contador++;
+                        }
+                        else
+                        {
+                            this.setPelotaY(this.getPelotaY() + 1);
+                            contador = 0;
+                        }
+                    }
+                    break;
+                case 5:
+                    if (this.getDireccionY() == 1)
+                    {
+                        if (contador < 4)
+                        {
+                            this.setPelotaY(this.getPelotaY());
+                            contador++;
+                        }
+                        else
+                        {
+                            this.setPelotaY(this.getPelotaY() - 1);
+                            contador = 0;
+                        }
+                    }
+                    else
+                    {
+                        if (contador < 4)
                         {
                             this.setPelotaY(this.getPelotaY());
                             contador++;

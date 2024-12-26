@@ -30,29 +30,25 @@ namespace PinPongC_
                 case 1:
                     this.x = 17;
                     this.y = 7; 
-                    this.tablero = new char[y, x];
                     break;
                 case 2:
-                    this.x = 19;
-                    this.y = 7;
-                    this.tablero = new char[y, x];
+                    this.x = 20;
+                    this.y = 8;
                     break;
                 case 3:
-                    this.x = 21;
+                    this.x = 23;
                     this.y = 9;
-                    this.tablero = new char[y, x];
                     break;
                 case 4:
-                    this.x = 23;
-                    this.y = 11;
-                    this.tablero = new char[y, x];
+                    this.x = 26;
+                    this.y = 10;
                     break;
                 case 5:
-                    this.x = 25;
+                    this.x = 29;
                     this.y = 11;
-                    this.tablero = new char[y, x];
                     break;
             }
+            this.tablero = new char[y, x];
         }
 
         //MÉTODO DE CLASE TABLERO QUE DIBUJARÁ LOS BORDES DEL MAPA/TABLERO
@@ -87,8 +83,8 @@ namespace PinPongC_
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine($"\nPRIMERO EN MARCAR {puntosParaGanar} GOL/ES\nDIFICULTAD ({dificultad}%)");
-            Console.WriteLine("\nFlecha arriba/abajo para moverte\nESC: Menú de pausa\nCreado por Jacob Parra Silva");
+            Console.WriteLine($"\nPRIMERO EN MARCAR {puntosParaGanar} GOL/ES\nDIFICULTAD ({dificultad}%)\nVELOCIDAD({Program.menuObj.getVelPelotaText()})");
+            Console.WriteLine("\nFlecha arriba/abajo para moverte\nESC: Menú de pausa\n\nCreado por Jacob Parra Silva");
         }
     }
 }
