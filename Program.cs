@@ -227,12 +227,14 @@ namespace PinPongC_
                     switch (ganador)
                     {
                         case 1:
-                            Console.WriteLine($"Enhorabuena has ganado!\nRESULTADO: Jugador({marcadorP1}) - ({marcadorNpc})Npc");
+                            Console.WriteLine("┬  ┬┬┌─┐┌┬┐┌─┐┬─┐┬┌─┐\r\n└┐┌┘││   │ │ │├┬┘│├─┤\r\n └┘ ┴└─┘ ┴ └─┘┴└─┴┴ ┴");
+                            Console.WriteLine($" ¡Enhorabuena has ganado!\n RESULTADO: Jugador({marcadorP1}) - ({marcadorNpc})Npc");
                             Thread.Sleep(3000);
                             gameOver();
                             break;
                         case 2:
-                            Console.WriteLine($"Lo sentimos, has perdido, la próxima vez será!\nRESULTADO: Jugador({marcadorP1}) - ({marcadorNpc})Npc");
+                            Console.WriteLine("┌┬┐┌─┐┬─┐┬─┐┌─┐┌┬┐┌─┐\r\n ││├┤ ├┬┘├┬┘│ │ │ ├─┤\r\n─┴┘└─┘┴└─┴└─└─┘ ┴ ┴ ┴");
+                            Console.WriteLine($" Lo sentimos, has perdido. ¡la próxima vez será!\n RESULTADO: Jugador({marcadorP1}) - ({marcadorNpc})Npc");
                             Thread.Sleep(3000);
                             gameOver();
                             break;
@@ -248,16 +250,16 @@ namespace PinPongC_
                     marcadorNpc = puntos.getNpcPts();
 
                     switch (goal)
-                    {
-                        case 1:
+                    {//LOS CARÁCTERES RAROS ES DIBUJO ASCII
+                        case 1://GOL DEL JUGADOR
                             Console.Clear();
-                            Console.WriteLine($"GOOOOOOL del Jugador\nEl marcador se posiciona {marcadorP1} a {marcadorNpc}\n\nPulsa dos veces para continuar");
+                            Console.WriteLine($"┌─┐┌─┐┌─┐┬    ┌┬┐┌─┐┬     ┬┬ ┬┌─┐┌─┐┌┬┐┌─┐┬─┐┬\r\n│ ┬│ ││ ││     ││├┤ │     ││ ││ ┬├─┤ │││ │├┬┘│\r\n└─┘└─┘└─┘┴─┘  ─┴┘└─┘┴─┘  └┘└─┘└─┘┴ ┴─┴┘└─┘┴└─o\n El marcador se posiciona {marcadorP1} a {marcadorNpc}\n\n Pulsa dos veces para continuar");
                             Console.ReadKey();
                             Console.Clear();
                             break;
-                        case 2:
+                        case 2://GOL DEL NPC
                             Console.Clear();
-                            Console.WriteLine($"GOOOOOOL del Npc\nEl marcador se posiciona {marcadorP1} a {marcadorNpc}\n\nPulsa dos veces para continuar");
+                            Console.WriteLine($"┌─┐┌─┐┌─┐┬    ┌┬┐┌─┐┬    ┬─┐┬┬  ┬┌─┐┬  ┬\r\n│ ┬│ ││ ││     ││├┤ │    ├┬┘│└┐┌┘├─┤│  │\r\n└─┘└─┘└─┘┴─┘  ─┴┘└─┘┴─┘  ┴└─┴ └┘ ┴ ┴┴─┘o\n El marcador se posiciona {marcadorP1} a {marcadorNpc}\n\n Pulsa dos veces para continuar");
                             Console.ReadKey();
                             Console.Clear();
                             break;
@@ -275,7 +277,7 @@ namespace PinPongC_
 
                     do
                     {
-                        Console.WriteLine("El partido ha acabado, ¿Quieres volver al menu principal? (Y/N)");
+                        Console.WriteLine(" El partido ha acabado, ¿Quieres volver al menu principal? (Y/N)");
                         succes = char.TryParse(Console.ReadLine().ToUpper(), out tryAgain);
                     } while (succes == false && (tryAgain != 'Y' || tryAgain != 'N'));
 
@@ -285,7 +287,7 @@ namespace PinPongC_
 
                             reseteaMarcador = true;
                             Console.Clear();
-                            Console.WriteLine("Volviendo al menú principal");
+                            Console.WriteLine(" Volviendo al menú principal");
                             Thread.Sleep(1000);
                             Reset();
 
@@ -293,7 +295,7 @@ namespace PinPongC_
                         case 'N':
 
                             Console.Clear();
-                            Console.WriteLine("Cerrando juego");
+                            Console.WriteLine(" Cerrando juego");
                             Thread.Sleep(1000);
                             Environment.Exit(0);
                             break;

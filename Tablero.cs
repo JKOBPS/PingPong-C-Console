@@ -73,18 +73,19 @@ namespace PinPongC_
         public static void Imprime(char[,] array, int p1Pts, int npcPts, int puntosParaGanar, int dificultad)
         {
             Console.SetCursorPosition(0, 0);
-            Console.WriteLine($"---------MARCADOR---------\nJugador ({p1Pts}) - ({npcPts}) NpcRival");
+            Console.WriteLine($"\n ---------MARCADOR--------\n JUGADOR ({p1Pts}) - ({npcPts}) RIVAL");
             
             for (int i = 0; i < array.GetLength(0); i++)
             {
+                Console.Write(" ");
                 for (int j = 0; j < array.GetLength(1); j++)
                 {
                     Console.Write(array[i, j]);
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine($"\nPRIMERO EN MARCAR {puntosParaGanar} GOL/ES\nDIFICULTAD ({dificultad}%)\nVELOCIDAD({Program.menuObj.getVelPelotaText()})");
-            Console.WriteLine("\nFlecha arriba/abajo para moverte\nESC: Menú de pausa\n\nCreado por Jacob Parra Silva");
+            Console.WriteLine($"\n PRIMERO EN MARCAR {puntosParaGanar} GOL/ES\n DIFICULTAD ({dificultad}%)\n VELOCIDAD({Program.menuObj.getVelPelotaText()})");
+            Console.WriteLine("\n ESC: Menú de pausa\n Flecha arriba/abajo para moverte\n\n Creado por Jacob Parra Silva");
         }
     }
 }
