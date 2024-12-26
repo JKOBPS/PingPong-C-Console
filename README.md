@@ -5,7 +5,7 @@ you can adjust the goal limit, field size,
 speed of the game, and difficulty to test
 your gaming skills.
 
-The desing is ASCII like, whose style match perfect
+The desing is ASCII like, which style match perfect
 with this og game.
 
 Im currently thinking to do an update adding competitive mode,
