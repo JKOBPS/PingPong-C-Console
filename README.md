@@ -15,6 +15,6 @@ and the points they got in that run.
 Im open to any suggestions.
 Opensource code so you can use it to learn, fix o upgrade it!
 
-Make sure to give me credits! :D
+Make sure to give credits! :D
 
 https://github.com/JKOBPS
